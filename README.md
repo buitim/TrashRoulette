@@ -1,2 +1,2 @@
-# TrashTrack
-Planned iOS app to track all of your favorite ~~trash~~ anime
+# TrashRoulette
+Planned iOS app to suggest random ~~trash~~ anime
