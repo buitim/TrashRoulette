@@ -1,10 +1,11 @@
-query getShow($showID: 101165) { # Goblin Slayer | FOR DEBUG
+query getShow($showID: Int = 101165) {
+	# Goblin Slayer | FOR DEBUG
 	Media(id: $showID, type: ANIME) {
-    id
-    title {
-      romaji
-      english
-      native
-    }
-  }
+		id
+		title {
+			romaji
+			english
+			native
+		}
+	}
 }

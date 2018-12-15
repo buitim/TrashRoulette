@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013B318221C4E10000352482 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 013B318121C4E10000352482 /* schema.json */; };
+		013B318521C4E14E00352482 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B318421C4E14E00352482 /* API.swift */; };
+		013B318A21C4E36900352482 /* getShow.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 013B318921C4E36900352482 /* getShow.graphql */; };
 		01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532DE21C4CD3A00007297 /* AppDelegate.swift */; };
 		01A532E121C4CD3A00007297 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E021C4CD3A00007297 /* FirstViewController.swift */; };
 		01A532E321C4CD3A00007297 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E221C4CD3A00007297 /* SecondViewController.swift */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.debug.xcconfig"; sourceTree = "<group>"; };
+		013B318121C4E10000352482 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		013B318421C4E14E00352482 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		013B318921C4E36900352482 /* getShow.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getShow.graphql; sourceTree = "<group>"; };
 		01A532DB21C4CD3A00007297 /* TrashRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A532DE21C4CD3A00007297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A532E021C4CD3A00007297 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013B318621C4E1C300352482 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				013B318921C4E36900352482 /* getShow.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		01A532D221C4CD3A00007297 = {
 			isa = PBXGroup;
 			children = (
@@ -63,9 +77,12 @@
 		01A532DD21C4CD3A00007297 /* TrashRoulette */ = {
 			isa = PBXGroup;
 			children = (
+				013B318621C4E1C300352482 /* GraphQL */,
 				01A532DE21C4CD3A00007297 /* AppDelegate.swift */,
 				01A532E021C4CD3A00007297 /* FirstViewController.swift */,
 				01A532E221C4CD3A00007297 /* SecondViewController.swift */,
+				013B318421C4E14E00352482 /* API.swift */,
+				013B318121C4E10000352482 /* schema.json */,
 				01A532E421C4CD3A00007297 /* Main.storyboard */,
 				01A532E721C4CD3B00007297 /* Assets.xcassets */,
 				01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */,
@@ -152,7 +169,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013B318A21C4E36900352482 /* getShow.graphql in Resources */,
 				01A532EB21C4CD3B00007297 /* LaunchScreen.storyboard in Resources */,
+				013B318221C4E10000352482 /* schema.json in Resources */,
 				01A532E821C4CD3B00007297 /* Assets.xcassets in Resources */,
 				01A532E621C4CD3A00007297 /* Main.storyboard in Resources */,
 			);
@@ -177,7 +196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift\n";
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
 		};
 		405CF8AADB83F06221B91368 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -232,6 +251,7 @@
 			files = (
 				01A532E321C4CD3A00007297 /* SecondViewController.swift in Sources */,
 				01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */,
+				013B318521C4E14E00352482 /* API.swift in Sources */,
 				01A532E121C4CD3A00007297 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

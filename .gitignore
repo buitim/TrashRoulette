@@ -4,6 +4,7 @@
 
 .DS_Store
 /Pods/
+/node_modules/
 
 ## Build generated
 build/
