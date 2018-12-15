@@ -4,7 +4,7 @@ import Apollo
 
 public final class GetShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getShow($showID: Int) {\n  Media(id: $showID, type: ANIME) {\n    __typename\n    id\n    title {\n      __typename\n      romaji\n      english\n      native\n    }\n  }\n}"
+    "query getShow($showID: Int) {\n  Media(id: $showID, type: ANIME) {\n    __typename\n    id\n    coverImage {\n      __typename\n      large\n      extraLarge\n      medium\n    }\n    title {\n      __typename\n      romaji\n      english\n      native\n    }\n  }\n}"
 
   public var showID: Int?
 
@@ -49,6 +49,7 @@ public final class GetShowQuery: GraphQLQuery {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("coverImage", type: .object(CoverImage.selections)),
         GraphQLField("title", type: .object(Title.selections)),
       ]
 
@@ -58,8 +59,8 @@ public final class GetShowQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: Int, title: Title? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Media", "id": id, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }])
+      public init(id: Int, coverImage: CoverImage? = nil, title: Title? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Media", "id": id, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -81,6 +82,16 @@ public final class GetShowQuery: GraphQLQuery {
         }
       }
 
+      /// The cover images of the media
+      public var coverImage: CoverImage? {
+        get {
+          return (resultMap["coverImage"] as? ResultMap).flatMap { CoverImage(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "coverImage")
+        }
+      }
+
       /// The official titles of the media in various languages
       public var title: Title? {
         get {
@@ -88,6 +99,66 @@ public final class GetShowQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue?.resultMap, forKey: "title")
+        }
+      }
+
+      public struct CoverImage: GraphQLSelectionSet {
+        public static let possibleTypes = ["MediaCoverImage"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("large", type: .scalar(String.self)),
+          GraphQLField("extraLarge", type: .scalar(String.self)),
+          GraphQLField("medium", type: .scalar(String.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(large: String? = nil, extraLarge: String? = nil, medium: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "MediaCoverImage", "large": large, "extraLarge": extraLarge, "medium": medium])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The cover image url of the media at a large size
+        public var large: String? {
+          get {
+            return resultMap["large"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "large")
+          }
+        }
+
+        /// The cover image url of the media at its largest size. If this size isn't available, large will be provided instead.
+        public var extraLarge: String? {
+          get {
+            return resultMap["extraLarge"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "extraLarge")
+          }
+        }
+
+        /// The cover image url of the media at medium size
+        public var medium: String? {
+          get {
+            return resultMap["medium"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "medium")
+          }
         }
       }
 

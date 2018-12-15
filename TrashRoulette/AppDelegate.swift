@@ -7,6 +7,7 @@
 //
 
 import Apollo
+import Imaginary
 import UIKit
 
 let graphQLEndpoint = "https://graphql.anilist.co"
