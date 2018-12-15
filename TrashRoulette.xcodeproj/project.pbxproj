@@ -13,9 +13,11 @@
 		01A532E621C4CD3A00007297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E421C4CD3A00007297 /* Main.storyboard */; };
 		01A532E821C4CD3B00007297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E721C4CD3B00007297 /* Assets.xcassets */; };
 		01A532EB21C4CD3B00007297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */; };
+		9342C3579383C5BA017E0718 /* Pods_TrashRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.debug.xcconfig"; sourceTree = "<group>"; };
 		01A532DB21C4CD3A00007297 /* TrashRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A532DE21C4CD3A00007297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A532E021C4CD3A00007297 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		01A532E721C4CD3B00007297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A532EA21C4CD3B00007297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01A532EC21C4CD3B00007297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.release.xcconfig"; sourceTree = "<group>"; };
+		6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9342C3579383C5BA017E0718 /* Pods_TrashRoulette.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				01A532DD21C4CD3A00007297 /* TrashRoulette */,
 				01A532DC21C4CD3A00007297 /* Products */,
+				AAAB0829D9916E31852DAEDB /* Pods */,
+				6B3ACA9492F0D0BFF777C4B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = TrashRoulette;
 			sourceTree = "<group>";
 		};
+		6B3ACA9492F0D0BFF777C4B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAAB0829D9916E31852DAEDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */,
+				22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01A532EF21C4CD3B00007297 /* Build configuration list for PBXNativeTarget "TrashRoulette" */;
 			buildPhases = (
+				405CF8AADB83F06221B91368 /* [CP] Check Pods Manifest.lock */,
 				01A532D721C4CD3A00007297 /* Sources */,
 				01A532D821C4CD3A00007297 /* Frameworks */,
 				01A532D921C4CD3A00007297 /* Resources */,
+				40A98E3D6B154225C0F3F457 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		405CF8AADB83F06221B91368 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrashRoulette-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40A98E3D6B154225C0F3F457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01A532D721C4CD3A00007297 /* Sources */ = {
@@ -284,6 +357,7 @@
 		};
 		01A532F021C4CD3B00007297 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +376,7 @@
 		};
 		01A532F121C4CD3B00007297 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
