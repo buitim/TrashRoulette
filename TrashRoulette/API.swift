@@ -4,7 +4,7 @@ import Apollo
 
 public final class GetShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getShow($showID: Int = 101165) {\n  Media(id: $showID, type: ANIME) {\n    __typename\n    id\n    title {\n      __typename\n      romaji\n      english\n      native\n    }\n  }\n}"
+    "query getShow($showID: Int) {\n  Media(id: $showID, type: ANIME) {\n    __typename\n    id\n    title {\n      __typename\n      romaji\n      english\n      native\n    }\n  }\n}"
 
   public var showID: Int?
 

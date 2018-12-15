@@ -1,4 +1,4 @@
-query getShow($showID: Int = 101165) {
+query getShow($showID: Int) {
 	# Goblin Slayer | FOR DEBUG
 	Media(id: $showID, type: ANIME) {
 		id

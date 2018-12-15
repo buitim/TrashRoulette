@@ -7,5 +7,6 @@ target 'TrashRoulette' do
 
   # Pods for TrashRoulette
   pod 'Apollo', '~> 0.9'
+  pod 'Imaginary', '~> 4.2'
 
 end
