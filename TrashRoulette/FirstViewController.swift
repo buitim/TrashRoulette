@@ -30,9 +30,13 @@ class FirstViewController: UIViewController {
 	func runQuery(genre: String) {
 		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
 			guard let data = result?.data?.page?.media else { return }
-			self.showID.text = "\((data[data.startIndex]?.title?.native)!)" // Force unwrap because swift is a bitch
-			self.showTitle.text = data[data.startIndex]?.title?.romaji
-			let imageURL = URL(string: (data[data.startIndex]?.coverImage?.extraLarge)!)
+			
+			let randomIndex = arc4random_uniform(UInt32(data.count))
+			print("== \(randomIndex)")
+			
+			self.showID.text = "\((data[data.index(0, offsetBy: Int(randomIndex))]?.title?.native)!)" // Force unwrap because swift is a bitch
+			self.showTitle.text = data[data.index(0, offsetBy: Int(randomIndex))]?.title?.romaji
+			let imageURL = URL(string: (data[data.index(0, offsetBy: Int(randomIndex))]?.coverImage?.extraLarge)!)
 			self.showArt.setImage(url: imageURL!)
 		}
 	}
