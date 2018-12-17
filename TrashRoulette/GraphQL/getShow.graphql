@@ -1,38 +1,39 @@
-query getShow($showID: Int) {
-	# Goblin Slayer | FOR DEBUG
-	Media(id: $showID, type: ANIME) {
-		id
-		coverImage {
-			large
-			extraLarge
-			medium
-		}
-		title {
-			romaji
-			english
-			native
-		}
-	}
-}
-# query getShow($genre: String) {
-# 	Page(page: 1, perPage: 1) {
-# 		Media(
-# 			genre: $genre
-# 			season: FALL
-# 			seasonYear: 2018
-# 			sort: POPULARITY_DESC
-# 		) {
-# 			id
-# 			genres
-# 			coverImage {
-# 				extraLarge
-# 				large
-# 				medium
-# 			}
-# 			title {
-# 				romaji
-# 				english
-# 			}
+# query getShow($showID: Int) {
+# 	# Goblin Slayer | FOR DEBUG
+# 	Media(id: $showID, type: ANIME) {
+# 		id
+# 		coverImage {
+# 			large
+# 			extraLarge
+# 			medium
+# 		}
+# 		title {
+# 			romaji
+# 			english
+# 			native
 # 		}
 # 	}
 # }
+query getShow($genre: String) {
+	Page(page: 1, perPage: 10) {
+		media(
+			genre: $genre
+			season: FALL
+			seasonYear: 2018
+			sort: POPULARITY_DESC
+		) {
+			id
+			genres
+			coverImage {
+				extraLarge
+				large
+				medium
+			}
+			title {
+				romaji
+				english
+				native
+			}
+		}
+	}
+}

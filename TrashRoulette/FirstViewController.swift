@@ -24,15 +24,15 @@ class FirstViewController: UIViewController {
 	
 	@IBAction func runSearch(_ sender: Any) {
 		print("== Text Box: \(searchField.text!)")
-		runQuery(showID: Int(searchField.text!)!)
+		runQuery(genre: (searchField.text)!)
 	}
 	
-	func runQuery(showID: Int) {
-		apollo.fetch(query: GetShowQuery(showID: showID)) { result, _ in
-			guard let data = result?.data else { return }
-			self.showID.text = "\((data.media?.title?.native)!)" // Force unwrap because swift is a bitch
-			self.showTitle.text = data.media?.title?.romaji
-			let imageURL = URL(string: (data.media?.coverImage?.extraLarge)!)
+	func runQuery(genre: String) {
+		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
+			guard let data = result?.data?.page?.media else { return }
+			self.showID.text = "\((data[data.startIndex]?.title?.native)!)" // Force unwrap because swift is a bitch
+			self.showTitle.text = data[data.startIndex]?.title?.romaji
+			let imageURL = URL(string: (data[data.startIndex]?.coverImage?.extraLarge)!)
 			self.showArt.setImage(url: imageURL!)
 		}
 	}
