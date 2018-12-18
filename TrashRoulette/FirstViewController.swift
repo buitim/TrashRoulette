@@ -38,10 +38,10 @@ class FirstViewController: UIViewController {
 	func runQuery(genre: String) {
         // Progress modal instance
         // Possible incorporate progress soon?
-        let hud = JGProgressHUD(style: .light)
+        let hud = JGProgressHUD(style: .dark)
         hud.vibrancyEnabled = true
         hud.animation = JGProgressHUDFadeZoomAnimation()
-        hud.cornerRadius = 20
+        hud.cornerRadius = 15
         hud.textLabel.text = "Loading shows..."
         hud.show(in: self.view)
         
