@@ -4,7 +4,7 @@ import Apollo
 
 public final class GetShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getShow($genre: String) {\n  Page(page: 1, perPage: 10) {\n    __typename\n    media(genre: $genre, season: FALL, seasonYear: 2018, sort: POPULARITY_DESC) {\n      __typename\n      id\n      genres\n      coverImage {\n        __typename\n        extraLarge\n        large\n        medium\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n    }\n  }\n}"
+    "query getShow($genre: String) {\n  Page(page: 1, perPage: 50) {\n    __typename\n    media(genre: $genre, season: FALL, seasonYear: 2018, sort: POPULARITY_DESC, isAdult: false) {\n      __typename\n      id\n      genres\n      coverImage {\n        __typename\n        extraLarge\n        large\n        medium\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n    }\n  }\n}"
 
   public var genre: String?
 
@@ -20,7 +20,7 @@ public final class GetShowQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 10], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 50], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -47,7 +47,7 @@ public final class GetShowQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "season": "FALL", "seasonYear": 2018, "sort": "POPULARITY_DESC"], type: .list(.object(Medium.selections))),
+        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "season": "FALL", "seasonYear": 2018, "sort": "POPULARITY_DESC", "isAdult": false], type: .list(.object(Medium.selections))),
       ]
 
       public private(set) var resultMap: ResultMap

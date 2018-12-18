@@ -15,12 +15,13 @@
 # 	}
 # }
 query getShow($genre: String) {
-	Page(page: 1, perPage: 10) {
+	Page(page: 1, perPage: 50) {
 		media(
 			genre: $genre
 			season: FALL
 			seasonYear: 2018
 			sort: POPULARITY_DESC
+			isAdult: false
 		) {
 			id
 			genres

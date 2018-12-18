@@ -22,21 +22,30 @@ class FirstViewController: UIViewController {
 	}
 	
 	
-	@IBAction func runSearch(_ sender: Any) {
-		print("== Text Box: \(searchField.text!)")
-		runQuery(genre: (searchField.text)!)
-	}
+    @IBAction func randomShowAction(_ sender: Any) {
+        runQuery(genre: "Action")
+    }
+    
+    @IBAction func randomShowRomance(_ sender: Any) {
+        runQuery(genre: "Romance")
+    }
+    
+    @IBAction func randomShowComedy(_ sender: Any) {
+        runQuery(genre: "Comedy")
+    }
 	
 	func runQuery(genre: String) {
+        print("== Querying...")
 		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
 			guard let data = result?.data?.page?.media else { return }
-			
 			let randomIndex = arc4random_uniform(UInt32(data.count))
-			print("== \(randomIndex)")
+			print("== Random Index: \(randomIndex)")
+
 			
-			self.showID.text = "\((data[data.index(0, offsetBy: Int(randomIndex))]?.title?.native)!)" // Force unwrap because swift is a bitch
-			self.showTitle.text = data[data.index(0, offsetBy: Int(randomIndex))]?.title?.romaji
-			let imageURL = URL(string: (data[data.index(0, offsetBy: Int(randomIndex))]?.coverImage?.extraLarge)!)
+            // Check for nil value here
+			self.showID.text = "\((data[data.index(Int(randomIndex), offsetBy:0)]?.title?.native)!)" // Force unwrap because swift is a bitch
+			self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+			let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
 			self.showArt.setImage(url: imageURL!)
 		}
 	}

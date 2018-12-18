@@ -40,19 +40,28 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQ8-Sj-jQp">
                                 <rect key="frame" x="100" y="102" width="175" height="309"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXH-SR-zzx">
-                                <rect key="frame" x="124" y="552" width="126" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBH-NV-onD">
+                                <rect key="frame" x="246" y="574" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWL-j9-qKD">
-                                <rect key="frame" x="163" y="624" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search"/>
+                                <state key="normal" title="Romance"/>
                                 <connections>
-                                    <action selector="runSearch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="oWR-iO-5oT"/>
+                                    <action selector="randomShowRomance:" destination="9pv-A4-QxB" eventType="touchUpInside" id="xsP-MV-3VG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S8-MI-hSg">
+                                <rect key="frame" x="160" y="574" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Comedy"/>
+                                <connections>
+                                    <action selector="randomShowComedy:" destination="9pv-A4-QxB" eventType="touchUpInside" id="MWn-OL-VmW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWL-j9-qKD">
+                                <rect key="frame" x="77" y="574" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Action"/>
+                                <connections>
+                                    <action selector="randomShowAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8cK-gU-95S"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,7 +84,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="searchField" destination="gXH-SR-zzx" id="Ita-fh-T2j"/>
                         <outlet property="showArt" destination="KQ8-Sj-jQp" id="Pxj-UI-QGb"/>
                         <outlet property="showID" destination="A5M-7J-77L" id="gHf-oR-uHa"/>
                         <outlet property="showTitle" destination="KQZ-1w-vlD" id="ZIa-UP-PKg"/>
