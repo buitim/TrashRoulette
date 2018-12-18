@@ -3,11 +3,12 @@ query getShow($genre: String) {
 		media(
 			genre: $genre
 			status_in: RELEASING
-			sort: POPULARITY_DESC
 			isAdult: false
+			type: ANIME
+			sort: POPULARITY_DESC
+			format: TV
+			countryOfOrigin: JP
 		) {
-			id
-			genres
 			coverImage {
 				extraLarge
 			}
@@ -15,6 +16,12 @@ query getShow($genre: String) {
 				romaji
 				english
 				native
+			}
+
+			studios(isMain: true) {
+				nodes {
+					name
+				}
 			}
 		}
 	}

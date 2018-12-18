@@ -10,19 +10,18 @@ import UIKit
 import JGProgressHUD
 
 class FirstViewController: UIViewController {
-	@IBOutlet var showTitle: UILabel!
-	@IBOutlet var showID: UILabel!
-	@IBOutlet weak var showArt: UIImageView!
-	@IBOutlet weak var searchField: UITextField!
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		
-		
-	}
-	
-	
+    @IBOutlet var showTitle: UILabel!
+    @IBOutlet var studioName: UILabel!
+    @IBOutlet weak var showArt: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    
+    
     @IBAction func randomShowAction(_ sender: Any) {
         runQuery(genre: "Action")
     }
@@ -34,8 +33,13 @@ class FirstViewController: UIViewController {
     @IBAction func randomShowComedy(_ sender: Any) {
         runQuery(genre: "Comedy")
     }
-	
-	func runQuery(genre: String) {
+    
+    @IBAction func randomShowPopular(_ sender: Any) {
+        grabPopular()
+    }
+    
+    func runQuery(genre: String) {
+        
         // Progress modal instance
         // Possible incorporate progress soon?
         let hud = JGProgressHUD(style: .dark)
@@ -45,19 +49,73 @@ class FirstViewController: UIViewController {
         hud.textLabel.text = "Taking out the trash..."
         hud.show(in: self.view)
         
-		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
-			guard let data = result?.data?.page?.media else { return }
+        // Run Query
+        apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
+            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+            
+            // Dismiss HUD
             hud.dismiss()
-			let randomIndex = arc4random_uniform(UInt32(data.count))
-			print("== Random Index: \(randomIndex)")
+            
+            // Grab random value out of the shows grabbed
+            let randomIndex = arc4random_uniform(UInt32(data.count))
+            print("== Random Index: \(randomIndex)") // DEBUG
+            
+            // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
+            let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
+            
+            if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+                self.studioName.text = getStudioNameHelper?[0]?.name
+            } else {
+                self.studioName.text = "Studio name not found..."
+            }
+            
+            // Get show title
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+            
+            // Get image
+            let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
+            self.showArt.setImage(url: imageURL!)
+        }
+    }
+    
+    func grabPopular() {
 
-			
-            // Check for nil value here (looking at you, Conception...)
-			self.showID.text = "\((data[data.index(Int(randomIndex), offsetBy:0)]?.title?.native)!)" // Force unwrap because swift is a bitch
-			self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
-			let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
-			self.showArt.setImage(url: imageURL!)
-		}
-	}
+        // Progress modal instance
+        // Possible incorporate progress soon?
+        let hud = JGProgressHUD(style: .dark)
+        hud.vibrancyEnabled = true
+        hud.animation = JGProgressHUDFadeZoomAnimation()
+        hud.cornerRadius = 15
+        hud.textLabel.text = "Taking out the trash..."
+        hud.show(in: self.view)
+
+        // Run Query
+        apollo.fetch(query: GetPopularAiringShowsQuery()) { result, _ in
+            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+
+            // Dismiss HUD
+            hud.dismiss()
+
+            // Grab random value out of the shows grabbed
+            let randomIndex = arc4random_uniform(UInt32(data.count))
+            print("== Random Index: \(randomIndex)") // DEBUG
+
+            // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
+            let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
+
+            if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+                self.studioName.text = getStudioNameHelper?[0]?.name
+            } else {
+                self.studioName.text = "Studio name not found..."
+            }
+
+            // Get show title
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+
+            // Get image
+            let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
+            self.showArt.setImage(url: imageURL!)
+        }
+    }
 }
 

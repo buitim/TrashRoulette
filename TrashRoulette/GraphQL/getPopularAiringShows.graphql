@@ -1,6 +1,13 @@
-query getPopularAiringShows() {
+query getPopularAiringShows($type: MediaType = ANIME) {
 	Page(page: 1, perPage: 100) {
-		media(status_in: RELEASING, isAdult: false, sort: POPULARITY_DESC) {
+		media(
+			status_in: RELEASING
+			isAdult: false
+			type: $type
+			sort: POPULARITY_DESC
+			format: TV
+			countryOfOrigin: JP
+		) {
 			title {
 				romaji
 				english
@@ -10,10 +17,8 @@ query getPopularAiringShows() {
 			}
 			averageScore
 			studios(isMain: true) {
-				edges {
-					node {
-						name
-					}
+				nodes {
+					name
 				}
 			}
 		}
