@@ -2,8 +2,7 @@ query getShow($genre: String) {
 	Page(page: 1, perPage: 50) {
 		media(
 			genre: $genre
-			season: FALL
-			seasonYear: 2018
+			status_in: RELEASING
 			sort: POPULARITY_DESC
 			isAdult: false
 		) {
@@ -11,8 +10,6 @@ query getShow($genre: String) {
 			genres
 			coverImage {
 				extraLarge
-				large
-				medium
 			}
 			title {
 				romaji

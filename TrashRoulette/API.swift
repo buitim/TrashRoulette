@@ -4,7 +4,7 @@ import Apollo
 
 public final class GetShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getShow($genre: String) {\n  Page(page: 1, perPage: 50) {\n    __typename\n    media(genre: $genre, season: FALL, seasonYear: 2018, sort: POPULARITY_DESC, isAdult: false) {\n      __typename\n      id\n      genres\n      coverImage {\n        __typename\n        extraLarge\n        large\n        medium\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n    }\n  }\n}"
+    "query getShow($genre: String) {\n  Page(page: 1, perPage: 50) {\n    __typename\n    media(genre: $genre, status_in: RELEASING, sort: POPULARITY_DESC, isAdult: false) {\n      __typename\n      id\n      genres\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n    }\n  }\n}"
 
   public var genre: String?
 
@@ -47,7 +47,7 @@ public final class GetShowQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "season": "FALL", "seasonYear": 2018, "sort": "POPULARITY_DESC", "isAdult": false], type: .list(.object(Medium.selections))),
+        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "status_in": "RELEASING", "sort": "POPULARITY_DESC", "isAdult": false], type: .list(.object(Medium.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -154,8 +154,6 @@ public final class GetShowQuery: GraphQLQuery {
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("extraLarge", type: .scalar(String.self)),
-            GraphQLField("large", type: .scalar(String.self)),
-            GraphQLField("medium", type: .scalar(String.self)),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -164,8 +162,8 @@ public final class GetShowQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(extraLarge: String? = nil, large: String? = nil, medium: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "MediaCoverImage", "extraLarge": extraLarge, "large": large, "medium": medium])
+          public init(extraLarge: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "MediaCoverImage", "extraLarge": extraLarge])
           }
 
           public var __typename: String {
@@ -184,26 +182,6 @@ public final class GetShowQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "extraLarge")
-            }
-          }
-
-          /// The cover image url of the media at a large size
-          public var large: String? {
-            get {
-              return resultMap["large"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "large")
-            }
-          }
-
-          /// The cover image url of the media at medium size
-          public var medium: String? {
-            get {
-              return resultMap["medium"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "medium")
             }
           }
         }

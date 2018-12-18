@@ -1,4 +1,4 @@
-{
+query getPopularAiringShows() {
 	Page(page: 1, perPage: 100) {
 		media(status_in: RELEASING, isAdult: false, sort: POPULARITY_DESC) {
 			title {
