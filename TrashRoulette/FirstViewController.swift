@@ -90,7 +90,7 @@ class FirstViewController: UIViewController {
         hud.show(in: self.view)
 
         // Run Query
-        apollo.fetch(query: GetPopularAiringShowsQuery()) { result, _ in
+        apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
             guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
 
             // Dismiss HUD
