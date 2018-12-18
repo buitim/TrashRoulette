@@ -42,7 +42,7 @@ class FirstViewController: UIViewController {
         hud.vibrancyEnabled = true
         hud.animation = JGProgressHUDFadeZoomAnimation()
         hud.cornerRadius = 15
-        hud.textLabel.text = "Loading shows..."
+        hud.textLabel.text = "Taking out the trash..."
         hud.show(in: self.view)
         
 		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
@@ -52,7 +52,7 @@ class FirstViewController: UIViewController {
 			print("== Random Index: \(randomIndex)")
 
 			
-            // Check for nil value here
+            // Check for nil value here (looking at you, Conception...)
 			self.showID.text = "\((data[data.index(Int(randomIndex), offsetBy:0)]?.title?.native)!)" // Force unwrap because swift is a bitch
 			self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
 			let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
