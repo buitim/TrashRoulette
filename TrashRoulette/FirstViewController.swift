@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class FirstViewController: UIViewController {
 	@IBOutlet var showTitle: UILabel!
@@ -35,9 +36,18 @@ class FirstViewController: UIViewController {
     }
 	
 	func runQuery(genre: String) {
-        print("== Querying...")
+        // Progress modal instance
+        // Possible incorporate progress soon?
+        let hud = JGProgressHUD(style: .light)
+        hud.vibrancyEnabled = true
+        hud.animation = JGProgressHUDFadeZoomAnimation()
+        hud.cornerRadius = 20
+        hud.textLabel.text = "Loading shows..."
+        hud.show(in: self.view)
+        
 		apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
 			guard let data = result?.data?.page?.media else { return }
+            hud.dismiss()
 			let randomIndex = arc4random_uniform(UInt32(data.count))
 			print("== Random Index: \(randomIndex)")
 
