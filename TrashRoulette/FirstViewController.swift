@@ -100,8 +100,7 @@ class FirstViewController: UIViewController {
             let randomIndex = arc4random_uniform(UInt32(data.count))
             print("== Random Index: \(randomIndex)") // DEBUG
 
-            // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
-            let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
+            let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
 
             if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
                 self.studioName.text = getStudioNameHelper?[0]?.name
@@ -110,10 +109,10 @@ class FirstViewController: UIViewController {
             }
 
             // Get show title
-            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+            self.showTitle.text = data[Int(randomIndex)]?.title?.romaji
 
             // Get image
-            let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
+            let imageURL = URL(string: (data[Int(randomIndex)]?.coverImage?.extraLarge)!)
             self.showArt.setImage(url: imageURL!)
         }
     }
