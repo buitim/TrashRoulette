@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  rouletteViewController.swift
 //  TrashRoulette
 //
 //  Created by Timothy Bui on 12/14/18.
@@ -9,7 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class FirstViewController: UIViewController {
+class rouletteViewController: UIViewController {
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var studioName: UILabel!
     @IBOutlet weak var showArt: UIImageView!

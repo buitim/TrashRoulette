@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class TrendingViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

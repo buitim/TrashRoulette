@@ -11,8 +11,8 @@
 		013B318521C4E14E00352482 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B318421C4E14E00352482 /* API.swift */; };
 		013B318A21C4E36900352482 /* getShow.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 013B318921C4E36900352482 /* getShow.graphql */; };
 		01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532DE21C4CD3A00007297 /* AppDelegate.swift */; };
-		01A532E121C4CD3A00007297 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E021C4CD3A00007297 /* FirstViewController.swift */; };
-		01A532E321C4CD3A00007297 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E221C4CD3A00007297 /* SecondViewController.swift */; };
+		01A532E121C4CD3A00007297 /* rouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E021C4CD3A00007297 /* rouletteViewController.swift */; };
+		01A532E321C4CD3A00007297 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E221C4CD3A00007297 /* TrendingViewController.swift */; };
 		01A532E621C4CD3A00007297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E421C4CD3A00007297 /* Main.storyboard */; };
 		01A532E821C4CD3B00007297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E721C4CD3B00007297 /* Assets.xcassets */; };
 		01A532EB21C4CD3B00007297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */; };
@@ -26,8 +26,8 @@
 		013B318921C4E36900352482 /* getShow.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getShow.graphql; sourceTree = "<group>"; };
 		01A532DB21C4CD3A00007297 /* TrashRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A532DE21C4CD3A00007297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01A532E021C4CD3A00007297 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		01A532E221C4CD3A00007297 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		01A532E021C4CD3A00007297 /* rouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rouletteViewController.swift; sourceTree = "<group>"; };
+		01A532E221C4CD3A00007297 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		01A532E521C4CD3A00007297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01A532E721C4CD3B00007297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A532EA21C4CD3B00007297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 			children = (
 				013B318621C4E1C300352482 /* GraphQL */,
 				01A532DE21C4CD3A00007297 /* AppDelegate.swift */,
-				01A532E021C4CD3A00007297 /* FirstViewController.swift */,
-				01A532E221C4CD3A00007297 /* SecondViewController.swift */,
+				01A532E021C4CD3A00007297 /* rouletteViewController.swift */,
+				01A532E221C4CD3A00007297 /* TrendingViewController.swift */,
 				013B318421C4E14E00352482 /* API.swift */,
 				013B318121C4E10000352482 /* schema.json */,
 				01A532E421C4CD3A00007297 /* Main.storyboard */,
@@ -255,10 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A532E321C4CD3A00007297 /* SecondViewController.swift in Sources */,
+				01A532E321C4CD3A00007297 /* TrendingViewController.swift in Sources */,
 				01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */,
 				013B318521C4E14E00352482 /* API.swift in Sources */,
-				01A532E121C4CD3A00007297 /* FirstViewController.swift in Sources */,
+				01A532E121C4CD3A00007297 /* rouletteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
