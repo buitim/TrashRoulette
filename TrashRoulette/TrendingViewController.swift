@@ -33,7 +33,6 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print("== Data Count: \(popularData.count)")
-        grabPopularData()
         if popularData.isEmpty {
             return 50
         } else {
@@ -45,8 +44,9 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! TrendingTableViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! TrendingTableViewCell
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
         
         let showData = popularData[indexPath.row]
         cell.trendingTitleLabel.text = showData.studio
@@ -54,6 +54,11 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
         cell.trendingImageView.setImage(url: showData.imageURL!)
         
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.grabPopularData()
     }
     
     override func viewDidLoad() {
