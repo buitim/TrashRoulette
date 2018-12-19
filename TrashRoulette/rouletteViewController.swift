@@ -105,7 +105,7 @@ class rouletteViewController: UIViewController {
             if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
                 self.studioName.text = getStudioNameHelper?[0]?.name
             } else {
-                self.studioName.text = "Studio name not found..."
+                self.studioName.text = "Unknown Studio"
             }
 
             // Get show title
