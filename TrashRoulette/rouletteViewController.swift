@@ -38,6 +38,28 @@ class rouletteViewController: UIViewController {
         grabPopular()
     }
     
+    fileprivate func grabData(_ data: [GetShowQuery.Data.Page.Medium?]) {
+        // Grab random value out of the shows grabbed
+        let randomIndex = arc4random_uniform(UInt32(data.count))
+        print("== Random Index: \(randomIndex)") // DEBUG
+        
+        // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
+        let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
+        
+        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+            self.studioName.text = getStudioNameHelper?[0]?.name
+        } else {
+            self.studioName.text = "Unknown Studio"
+        }
+        
+        // Get show title
+        self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+        
+        // Get image
+        let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
+        self.showArt.setImage(url: imageURL!)
+    }
+    
     func runQuery(genre: String) {
         
         // Progress modal instance
@@ -56,26 +78,27 @@ class rouletteViewController: UIViewController {
             // Dismiss HUD
             hud.dismiss()
             
-            // Grab random value out of the shows grabbed
-            let randomIndex = arc4random_uniform(UInt32(data.count))
-            print("== Random Index: \(randomIndex)") // DEBUG
-            
-            // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
-            let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
-            
-            if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-                self.studioName.text = getStudioNameHelper?[0]?.name
-            } else {
-                self.studioName.text = "Studio name not found..."
-            }
-            
-            // Get show title
-            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
-            
-            // Get image
-            let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
-            self.showArt.setImage(url: imageURL!)
+            self.grabData(data)
         }
+    }
+    
+    fileprivate func grabPopularData(_ data: [GetPopularAiringShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
+        // DEBUG
+        
+        let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
+        
+        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+            self.studioName.text = getStudioNameHelper?[0]?.name
+        } else {
+            self.studioName.text = "Unknown Studio"
+        }
+        
+        // Get show title
+        self.showTitle.text = data[Int(randomIndex)]?.title?.romaji
+        
+        // Get image
+        let imageURL = URL(string: (data[Int(randomIndex)]?.coverImage?.extraLarge)!)
+        self.showArt.setImage(url: imageURL!)
     }
     
     func grabPopular() {
@@ -98,22 +121,8 @@ class rouletteViewController: UIViewController {
 
             // Grab random value out of the shows grabbed
             let randomIndex = arc4random_uniform(UInt32(data.count))
-            print("== Random Index: \(randomIndex)") // DEBUG
-
-            let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
-
-            if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-                self.studioName.text = getStudioNameHelper?[0]?.name
-            } else {
-                self.studioName.text = "Unknown Studio"
-            }
-
-            // Get show title
-            self.showTitle.text = data[Int(randomIndex)]?.title?.romaji
-
-            // Get image
-            let imageURL = URL(string: (data[Int(randomIndex)]?.coverImage?.extraLarge)!)
-            self.showArt.setImage(url: imageURL!)
+            print("== Random Index: \(randomIndex)")
+            self.grabPopularData(data, randomIndex)
         }
     }
 }

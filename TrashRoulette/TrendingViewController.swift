@@ -31,15 +31,27 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
     var tempShowData = showData()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        print("== Data Count: \(popularData.count)")
+        grabPopularData()
+        if popularData.isEmpty {
+            return 50
+        } else {
+            return popularData.count
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! TrendingTableViewCell
         
-        cell.trendingTitleLabel.text = "Lorem"
-        cell.trendingStudioLabel.text = "Ipsum"
-        //        cell.trendingImageView.image
+        let showData = popularData[indexPath.row]
+        cell.trendingTitleLabel.text = showData.studio
+        cell.trendingStudioLabel.text = showData.studio
+        cell.trendingImageView.setImage(url: showData.imageURL!)
         
         return cell
     }
@@ -48,9 +60,8 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        
-        trendingTableView.delegate = self
-        trendingTableView.dataSource = self
+        //        trendingTableView.delegate = self
+        //        trendingTableView.dataSource = self
     }
     
     
@@ -67,22 +78,30 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
             
             // Get show title
             self.tempShowData.title = (index?.title?.romaji)!
+            print("== Show Title: \(String(describing: self.tempShowData.title))")
             
             // Get image
             self.tempShowData.imageURL = URL(string: (index?.coverImage?.extraLarge)!)!
+            
+            /// Store the results in the struct array
+            popularData.append(tempShowData)
         }
     }
     
-    func grabPopular() {
-        
-        // Progress modal instance
-        // Possible incorporate progress soon?
-        let hud = JGProgressHUD(style: .dark)
+    fileprivate func showHUD(_ hud: JGProgressHUD) {
         hud.vibrancyEnabled = true
         hud.animation = JGProgressHUDFadeZoomAnimation()
         hud.cornerRadius = 15
         hud.textLabel.text = "Taking out the trash..."
         hud.show(in: self.view)
+    }
+    
+    func grabPopularData() {
+        
+        // Progress modal instance
+        // Possible incorporate progress soon?
+        let hud = JGProgressHUD(style: .dark)
+        showHUD(hud)
         
         // Run Query
         apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
@@ -94,6 +113,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
             self.storeDataInArray(data) // Caius would be proud
             
         }
-    }
         
+    }
+    
 }
