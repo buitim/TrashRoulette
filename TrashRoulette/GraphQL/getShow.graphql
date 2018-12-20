@@ -1,8 +1,36 @@
-query getShow($genre: String) {
-	Page(page: 1, perPage: 50) {
+query getAiringShow($genre: String) {
+	Page(page: 1, perPage: 100) {
 		media(
 			genre: $genre
 			status_in: RELEASING
+			isAdult: false
+			type: ANIME
+			sort: POPULARITY_DESC
+			format: TV
+			countryOfOrigin: JP
+		) {
+			coverImage {
+				extraLarge
+			}
+			title {
+				romaji
+				english
+				native
+			}
+
+			studios(isMain: true) {
+				nodes {
+					name
+				}
+			}
+		}
+	}
+}
+
+query getAllShow($genre: String) {
+	Page(page: 1, perPage: 300) {
+		media(
+			genre: $genre
 			isAdult: false
 			type: ANIME
 			sort: POPULARITY_DESC

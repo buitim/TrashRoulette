@@ -15,8 +15,10 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet var studioName: UILabel!
     @IBOutlet weak var showArt: UIImageView!
     @IBOutlet weak var searchQueryPickerView: UIPickerView!
+    @IBOutlet weak var isAiringUISwitch: UISwitch!
     
     let queryTypes = ["Popular", "Action", "Romance", "Comedy", "Adventure", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller"]
+    var rouletteQuery: String = "Popular"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,8 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         showArt.layer.cornerRadius = 20
         searchQueryPickerView.delegate = self
         searchQueryPickerView.dataSource = self
+        isAiringUISwitch.setOn(true, animated: false)
+        grabPopular()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -41,14 +45,41 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if (queryTypes[row] != "Popular") {
-            runQuery(genre: queryTypes[row])
+        rouletteQuery = queryTypes[row]
+    }
+    
+    @IBAction func doLetJesusTakeTheWheel(_ sender: Any) {
+        
+        if (self.rouletteQuery != "Popular") {
+            runQuery(genre: self.rouletteQuery)
         } else {
             grabPopular()
         }
     }
     
-    fileprivate func grabData(_ data: [GetShowQuery.Data.Page.Medium?]) {
+    fileprivate func grabData(_ data: [GetAiringShowQuery.Data.Page.Medium?]) {
+        // Grab random value out of the shows grabbed
+        let randomIndex = arc4random_uniform(UInt32(data.count))
+        print("== Random Index: \(randomIndex)") // DEBUG
+        
+        // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
+        let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
+        
+        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+            self.studioName.text = getStudioNameHelper?[0]?.name
+        } else {
+            self.studioName.text = "Unknown Studio"
+        }
+        
+        // Get show title
+        self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+        
+        // Get image
+        let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
+        self.showArt.setImage(url: imageURL!)
+    }
+    
+    fileprivate func grabData(_ data: [GetAllShowQuery.Data.Page.Medium?]) {
         // Grab random value out of the shows grabbed
         let randomIndex = arc4random_uniform(UInt32(data.count))
         print("== Random Index: \(randomIndex)") // DEBUG
@@ -78,17 +109,28 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         hud.vibrancyEnabled = true
         hud.animation = JGProgressHUDFadeZoomAnimation()
         hud.cornerRadius = 15
-        hud.textLabel.text = "Taking out the trash..."
+        hud.textLabel.text = "Shooting you with that trash..."
         hud.show(in: self.view)
         
         // Run Query
-        apollo.fetch(query: GetShowQuery(genre: genre)) { result, _ in
-            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
-            
-            // Dismiss HUD
-            hud.dismiss()
-            
-            self.grabData(data)
+        if (isAiringUISwitch.isOn) {
+            apollo.fetch(query: GetAiringShowQuery(genre: genre)) { result, _ in
+                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                
+                // Dismiss HUD
+                hud.dismiss()
+                
+                self.grabData(data)
+            }
+        } else {
+            apollo.fetch(query: GetAllShowQuery(genre: genre)) { result, _ in
+                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                
+                // Dismiss HUD
+                hud.dismiss()
+                
+                self.grabData(data)
+            }
         }
     }
     
@@ -111,29 +153,61 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.showArt.setImage(url: imageURL!)
     }
     
+    fileprivate func grabPopularData(_ data: [GetPopularShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
+        // DEBUG
+        
+        let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
+        
+        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
+            self.studioName.text = getStudioNameHelper?[0]?.name
+        } else {
+            self.studioName.text = "Unknown Studio"
+        }
+        
+        // Get show title
+        self.showTitle.text = data[Int(randomIndex)]?.title?.romaji
+        
+        // Get image
+        let imageURL = URL(string: (data[Int(randomIndex)]?.coverImage?.extraLarge)!)
+        self.showArt.setImage(url: imageURL!)
+    }
+    
     func grabPopular() {
-
+        
         // Progress modal instance
         // Possible incorporate progress soon?
         let hud = JGProgressHUD(style: .dark)
         hud.vibrancyEnabled = true
         hud.animation = JGProgressHUDFadeZoomAnimation()
         hud.cornerRadius = 15
-        hud.textLabel.text = "Taking out the trash..."
+        hud.textLabel.text = "Shooting you with that trash..."
         hud.show(in: self.view)
-
+        
         // Run Query
-        apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
-            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
-
-            // Dismiss HUD
-            hud.dismiss()
-
-            // Grab random value out of the shows grabbed
-            let randomIndex = arc4random_uniform(UInt32(data.count))
-            print("== Random Index: \(randomIndex)")
-            self.grabPopularData(data, randomIndex)
+        if (isAiringUISwitch.isOn) {
+            apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
+                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                
+                // Dismiss HUD
+                hud.dismiss()
+                
+                // Grab random value out of the shows grabbed
+                let randomIndex = arc4random_uniform(UInt32(data.count))
+                print("== Random Index: \(randomIndex)")
+                self.grabPopularData(data, randomIndex)
+            }
+        } else {
+            apollo.fetch(query: GetPopularShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
+                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                
+                // Dismiss HUD
+                hud.dismiss()
+                
+                // Grab random value out of the shows grabbed
+                let randomIndex = arc4random_uniform(UInt32(data.count))
+                print("== Random Index: \(randomIndex)")
+                self.grabPopularData(data, randomIndex)
+            }
         }
     }
 }
-
