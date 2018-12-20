@@ -16,6 +16,7 @@ struct showData {
     
 }
 
+//MARK: Definition for custom cell
 class TrendingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var trendingTitleLabel: UILabel!
@@ -25,21 +26,16 @@ class TrendingTableViewCell: UITableViewCell {
 
 class TrendingViewController: UITableViewController {
     
-    /// Vars
+    //MARK: Local Vars
     var data = [showData]()
     var tempShowData = showData()
-//    let testArrayTitle = ["Test 1", "Test 2", "Test 3"]
-//    let testArrayStudio = ["Studio 1", "Studio 2", "Studio 3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         grabPopularData()
-        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("== Count: ", data.count)
         return data.count
     }
     
@@ -48,9 +44,7 @@ class TrendingViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendingTableCell", for: indexPath) as! TrendingTableViewCell
         
         cell.trendingTitleLabel.text = data[indexPath.row].title
-        print("== Show Title: ", data[indexPath.row].title!)
         cell.trendingStudioLabel.text = data[indexPath.row].studio
-        print("== Show Studio: ", data[indexPath.row].studio!)
         cell.trendingImageView.setImage(url: data[indexPath.row].imageURL!)
         
         return cell
@@ -78,10 +72,9 @@ class TrendingViewController: UITableViewController {
             self.data.append(tempShowData)
         }
         
-        print(self.data)
-        print(self.data.count)
-        
+        //MARK: Reload the table after we finally grabbed all of the data
         self.tableView.reloadData()
+        
     }
     
     fileprivate func showHUD(_ hud: JGProgressHUD) {
@@ -94,16 +87,15 @@ class TrendingViewController: UITableViewController {
     
     func grabPopularData() {
         
-        // Progress modal instance
-        // Possible incorporate progress soon?
+        //MARK: Progress modal instance
         let hud = JGProgressHUD(style: .dark)
         showHUD(hud)
         
-        // Run Query
+        //MARK: Run Query
         apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
             guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
             
-            // Dismiss HUD
+            //MARK: Dismiss HUD
             hud.dismiss()
             
             self.storeDataInArray(data) // Caius would be proud
