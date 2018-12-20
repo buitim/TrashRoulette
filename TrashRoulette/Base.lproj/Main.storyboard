@@ -91,27 +91,30 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241378"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Trending View Controller-->
         <scene sceneID="xYP-Su-XdR">
             <objects>
-                <tableViewController id="cEY-fX-6j0" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
+                <tableViewController id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="125" id="wSv-ju-Pfz">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingTableCell" id="wSv-ju-Pfz" customClass="TrendingTableViewCell" customModule="TrashRoulette" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSv-ju-Pfz" id="EWu-eg-L5e">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="124.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
-                                            <rect key="frame" x="280.00000000000023" y="3.0341908744821922" width="70.666666666666515" height="120.99999999999994"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
+                                            <rect key="frame" x="280" y="3" width="71" height="121"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="71" id="Bak-v8-KhH"/>
+                                            </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-Xk-4ae">
-                                            <rect key="frame" x="24" y="33.145363147923035" width="56" height="59"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-Xk-4ae">
+                                            <rect key="frame" x="24" y="33" width="56" height="59"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
                                                     <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -129,9 +132,19 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="leading" secondItem="uZe-Xk-4ae" secondAttribute="trailing" constant="218.33000000000001" id="TyY-R3-Csi"/>
+                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="leading" secondItem="EWu-eg-L5e" secondAttribute="leadingMargin" constant="8" id="9lw-9u-3bk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="BRN-Mc-3cK" secondAttribute="bottom" constant="-10" id="DRu-sV-yEm"/>
+                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="22.149999999999999" id="MJr-VR-ZP1"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="-8" id="g0i-jn-J3o"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="uZe-Xk-4ae" secondAttribute="bottom" constant="21.850000000000001" id="iQb-M6-ZJl"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="BRN-Mc-3cK" secondAttribute="trailing" constant="8" id="rgF-7Z-jh1"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="trendingImageView" destination="BRN-Mc-3cK" id="LEN-fT-mm6"/>
+                                    <outlet property="trendingStudioLabel" destination="UNv-PR-Sm0" id="r1U-BK-gdP"/>
+                                    <outlet property="trendingTitleLabel" destination="bcd-xK-nsF" id="d04-Y9-gKF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

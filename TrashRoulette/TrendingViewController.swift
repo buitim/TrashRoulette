@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  TrendingViewController.swift
 //  TrashRoulette
 //
 //  Created by Timothy Bui on 12/14/18.
@@ -23,52 +23,27 @@ class TrendingTableViewCell: UITableViewCell {
     @IBOutlet weak var trendingImageView: UIImageView!
 }
 
-class TrendingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TrendingViewController: UITableViewController {
     
     /// Vars
-    @IBOutlet weak var trendingTableView: UITableView!
     var data = [showData]()
     var tempShowData = showData()
+    let testArrayTitle = ["Test 1", "Test 2", "Test 3"]
+    let testArrayStudio = ["Studio 1", "Studio 2", "Studio 3"]
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("== Data Count: \(data.count)")
-        if data.isEmpty {
-            return 0
-        } else {
-            return data.count
-        }
-        
-        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return testArrayTitle.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as! TrendingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trendingTableCell", for: indexPath) as! TrendingTableViewCell
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
-        
-        let showData = data[indexPath.row]
-        cell.trendingTitleLabel.text = showData.studio
-        cell.trendingStudioLabel.text = showData.studio
-        cell.trendingImageView.setImage(url: showData.imageURL!)
+        cell.trendingTitleLabel.text = testArrayTitle[indexPath.row]
+        cell.trendingStudioLabel.text = testArrayStudio[indexPath.row]
+        cell.trendingImageView?.image = UIImage(named: "first")
         
         return cell
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.grabPopularData()
-        trendingTableView?.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        //        trendingTableView.delegate = self
-        //        trendingTableView.dataSource = self
-        
     }
     
     
