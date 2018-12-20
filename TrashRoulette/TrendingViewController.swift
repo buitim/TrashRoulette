@@ -28,20 +28,30 @@ class TrendingViewController: UITableViewController {
     /// Vars
     var data = [showData]()
     var tempShowData = showData()
-    let testArrayTitle = ["Test 1", "Test 2", "Test 3"]
-    let testArrayStudio = ["Studio 1", "Studio 2", "Studio 3"]
+//    let testArrayTitle = ["Test 1", "Test 2", "Test 3"]
+//    let testArrayStudio = ["Studio 1", "Studio 2", "Studio 3"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        grabPopularData()
+        self.tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArrayTitle.count
+        print("== Count: ", data.count)
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendingTableCell", for: indexPath) as! TrendingTableViewCell
         
-        cell.trendingTitleLabel.text = testArrayTitle[indexPath.row]
-        cell.trendingStudioLabel.text = testArrayStudio[indexPath.row]
-        cell.trendingImageView?.image = UIImage(named: "first")
+        cell.trendingTitleLabel.text = data[indexPath.row].title
+        print("== Show Title: ", data[indexPath.row].title!)
+        cell.trendingStudioLabel.text = data[indexPath.row].studio
+        print("== Show Studio: ", data[indexPath.row].studio!)
+        cell.trendingImageView.setImage(url: data[indexPath.row].imageURL!)
         
         return cell
     }
@@ -58,16 +68,20 @@ class TrendingViewController: UITableViewController {
                 self.tempShowData.studio = "Unknown Studio"
             }
             
-            // Get show title
+            /// Get show title
             self.tempShowData.title = (index?.title?.romaji)!
-            print("== Show Title: \(String(describing: self.tempShowData.title))")
             
-            // Get image
+            /// Get image
             self.tempShowData.imageURL = URL(string: (index?.coverImage?.extraLarge)!)!
             
             /// Store the results in the struct array
             self.data.append(tempShowData)
         }
+        
+        print(self.data)
+        print(self.data.count)
+        
+        self.tableView.reloadData()
     }
     
     fileprivate func showHUD(_ hud: JGProgressHUD) {
