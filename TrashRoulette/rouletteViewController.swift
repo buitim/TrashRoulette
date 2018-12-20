@@ -9,33 +9,43 @@
 import UIKit
 import JGProgressHUD
 
-class rouletteViewController: UIViewController {
+class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var studioName: UILabel!
     @IBOutlet weak var showArt: UIImageView!
+    @IBOutlet weak var searchQueryPickerView: UIPickerView!
+    
+    let queryTypes = ["Popular", "Action", "Romance", "Comedy", "Adventure", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         showArt.layer.cornerRadius = 20
+        searchQueryPickerView.delegate = self
+        searchQueryPickerView.dataSource = self
     }
     
-    
-    @IBAction func randomShowAction(_ sender: Any) {
-        runQuery(genre: "Action")
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    @IBAction func randomShowRomance(_ sender: Any) {
-        runQuery(genre: "Romance")
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return queryTypes.count
     }
     
-    @IBAction func randomShowComedy(_ sender: Any) {
-        runQuery(genre: "Comedy")
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return queryTypes[row]
     }
     
-    @IBAction func randomShowPopular(_ sender: Any) {
-        grabPopular()
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if (queryTypes[row] != "Popular") {
+            runQuery(genre: queryTypes[row])
+        } else {
+            grabPopular()
+        }
     }
     
     fileprivate func grabData(_ data: [GetShowQuery.Data.Page.Medium?]) {
