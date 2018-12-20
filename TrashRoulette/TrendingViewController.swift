@@ -27,16 +27,16 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
     
     /// Vars
     @IBOutlet weak var trendingTableView: UITableView!
-    var popularData = [showData]()
+    var data = [showData]()
     var tempShowData = showData()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("== Data Count: \(popularData.count)")
-        if popularData.isEmpty {
-            return 50
+        print("== Data Count: \(data.count)")
+        if data.isEmpty {
+            return 0
         } else {
-            return popularData.count
+            return data.count
         }
         
         
@@ -48,7 +48,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "TrendingTableViewCell") as! TrendingTableViewCell
         
-        let showData = popularData[indexPath.row]
+        let showData = data[indexPath.row]
         cell.trendingTitleLabel.text = showData.studio
         cell.trendingStudioLabel.text = showData.studio
         cell.trendingImageView.setImage(url: showData.imageURL!)
@@ -59,6 +59,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.grabPopularData()
+        trendingTableView?.reloadData()
     }
     
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view, typically from a nib.
         //        trendingTableView.delegate = self
         //        trendingTableView.dataSource = self
+        
     }
     
     
@@ -89,7 +91,7 @@ class TrendingViewController: UIViewController, UITableViewDelegate, UITableView
             self.tempShowData.imageURL = URL(string: (index?.coverImage?.extraLarge)!)!
             
             /// Store the results in the struct array
-            popularData.append(tempShowData)
+            self.data.append(tempShowData)
         }
     }
     
