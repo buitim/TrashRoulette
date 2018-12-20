@@ -18,7 +18,7 @@ class rouletteViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        showArt.layer.cornerRadius = 20
     }
     
     

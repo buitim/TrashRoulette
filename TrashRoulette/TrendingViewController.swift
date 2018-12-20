@@ -46,6 +46,7 @@ class TrendingViewController: UITableViewController {
         cell.trendingTitleLabel.text = data[indexPath.row].title
         cell.trendingStudioLabel.text = data[indexPath.row].studio
         cell.trendingImageView.setImage(url: data[indexPath.row].imageURL!)
+        cell.trendingImageView.layer.cornerRadius = 7
         
         return cell
     }

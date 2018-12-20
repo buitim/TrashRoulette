@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="rouletteViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Show Title" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
@@ -26,9 +26,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5p-Tc-IsO">
-                                <rect key="frame" x="0.0" y="-7" width="375" height="96"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5p-Tc-IsO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                 <items>
                                     <navigationItem title="Home" id="Gn1-PT-SVF"/>
                                 </items>
@@ -78,6 +77,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="T5p-Tc-IsO" secondAttribute="trailing" id="4xb-pG-WFb"/>
+                            <constraint firstItem="T5p-Tc-IsO" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="ru0-q6-w7X"/>
+                            <constraint firstItem="T5p-Tc-IsO" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="u6A-0c-rEf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Roulette" image="first" id="acW-dT-cKf"/>
@@ -91,53 +95,54 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241378"/>
         </scene>
-        <!--Trending View Controller-->
+        <!--Top 50 Airing-->
         <scene sceneID="xYP-Su-XdR">
             <objects>
-                <tableViewController id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                <tableViewController title="Top 50 Airing" id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingTableCell" id="wSv-ju-Pfz" customClass="TrendingTableViewCell" customModule="TrashRoulette" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="125"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSv-ju-Pfz" id="EWu-eg-L5e">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="124.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
-                                            <rect key="frame" x="280" y="3" width="71" height="121"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="71" id="Bak-v8-KhH"/>
-                                            </constraints>
-                                        </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-Xk-4ae">
-                                            <rect key="frame" x="24" y="33" width="56" height="59"/>
+                                            <rect key="frame" x="28" y="32.5" width="56" height="59.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="30.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Studio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
-                                                    <rect key="frame" x="0.0" y="41" width="56" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Studio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
+                                                    <rect key="frame" x="0.0" y="41.5" width="56" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
+                                            <rect key="frame" x="328" y="6" width="66" height="113"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="66" id="wJz-tg-jYR"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="leading" secondItem="EWu-eg-L5e" secondAttribute="leadingMargin" constant="8" id="9lw-9u-3bk"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="BRN-Mc-3cK" secondAttribute="bottom" constant="-10" id="DRu-sV-yEm"/>
-                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="22.149999999999999" id="MJr-VR-ZP1"/>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="-8" id="g0i-jn-J3o"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="uZe-Xk-4ae" secondAttribute="bottom" constant="21.850000000000001" id="iQb-M6-ZJl"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="BRN-Mc-3cK" secondAttribute="trailing" constant="8" id="rgF-7Z-jh1"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="centerY" secondItem="uZe-Xk-4ae" secondAttribute="centerY" id="7Cg-6l-xGx"/>
+                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="leading" secondItem="EWu-eg-L5e" secondAttribute="leadingMargin" constant="8" id="DCz-WJ-SvN"/>
+                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="21.670000000000002" id="F76-kf-J3n"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="centerY" secondItem="EWu-eg-L5e" secondAttribute="centerY" id="QAA-IF-rZh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="uZe-Xk-4ae" secondAttribute="bottom" constant="22.329999999999998" id="fXP-mY-vMA"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="trailing" secondItem="EWu-eg-L5e" secondAttribute="trailingMargin" id="iVk-71-9G3"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="-5" id="x37-8q-Wfz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -153,10 +158,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="XeI-q1-yUd"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMN-Nx-PwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="408"/>
+            <point key="canvasLocation" x="749.27536231884062" y="407.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
