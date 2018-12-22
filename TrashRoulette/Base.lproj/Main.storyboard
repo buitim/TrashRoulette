@@ -97,49 +97,44 @@
         <scene sceneID="xYP-Su-XdR">
             <objects>
                 <tableViewController title="Top Airing" id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingTableCell" id="wSv-ju-Pfz" customClass="TrendingTableViewCell" customModule="TrashRoulette" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="125"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSv-ju-Pfz" id="EWu-eg-L5e">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZT0-eo-Ryq">
-                                            <rect key="frame" x="20" y="35" width="280" height="56"/>
+                                        <stackView opaque="NO" contentMode="center" fixedFrame="YES" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="ZT0-eo-Ryq">
+                                            <rect key="frame" x="20" y="11" width="280" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Super long title to test" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Super long title to test" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super long studio name to test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
-                                                    <rect key="frame" x="0.0" y="38" width="280" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super long studio name to test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
+                                                    <rect key="frame" x="0.0" y="110" width="280" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                        </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
-                                            <rect key="frame" x="328" y="6" width="66" height="112.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="112.5" id="TPY-Vp-hH1"/>
-                                                <constraint firstAttribute="width" constant="66" id="kbH-9C-zbP"/>
+                                                <constraint firstItem="UNv-PR-Sm0" firstAttribute="top" secondItem="bcd-xK-nsF" secondAttribute="bottom" constant="8" id="gWI-SV-TJy"/>
                                             </constraints>
+                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
+                                            <rect key="frame" x="313" y="10" width="81" height="131"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="BRN-Mc-3cK" secondAttribute="bottom" constant="6" id="2SV-Wb-ppg"/>
-                                        <constraint firstAttribute="trailing" secondItem="BRN-Mc-3cK" secondAttribute="trailing" constant="20" id="nfe-Lu-spS"/>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="top" constant="6" id="vhe-Uq-QDa"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="trendingImageView" destination="BRN-Mc-3cK" id="LEN-fT-mm6"/>
