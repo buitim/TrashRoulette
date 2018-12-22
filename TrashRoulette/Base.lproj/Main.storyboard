@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.75892857142856"/>
         </scene>
-        <!--Top 50 Airing-->
+        <!--Top Airing-->
         <scene sceneID="xYP-Su-XdR">
             <objects>
-                <tableViewController title="Top 50 Airing" id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Top Airing" id="cEY-fX-6j0" customClass="TrendingViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vys-6N-W0w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,17 +109,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uZe-Xk-4ae">
-                                            <rect key="frame" x="28" y="32.5" width="56" height="59.5"/>
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZT0-eo-Ryq">
+                                            <rect key="frame" x="20" y="35" width="280" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="30.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Super long title to test" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Studio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
-                                                    <rect key="frame" x="0.0" y="41.5" width="56" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super long studio name to test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
+                                                    <rect key="frame" x="0.0" y="38" width="280" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -129,18 +130,15 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Mc-3cK">
                                             <rect key="frame" x="328" y="6" width="66" height="112.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="wJz-tg-jYR"/>
+                                                <constraint firstAttribute="height" constant="112.5" id="TPY-Vp-hH1"/>
+                                                <constraint firstAttribute="width" constant="66" id="kbH-9C-zbP"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="centerY" secondItem="uZe-Xk-4ae" secondAttribute="centerY" id="7Cg-6l-xGx"/>
-                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="leading" secondItem="EWu-eg-L5e" secondAttribute="leadingMargin" constant="8" id="DCz-WJ-SvN"/>
-                                        <constraint firstItem="uZe-Xk-4ae" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="21.670000000000002" id="F76-kf-J3n"/>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="centerY" secondItem="EWu-eg-L5e" secondAttribute="centerY" id="QAA-IF-rZh"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="uZe-Xk-4ae" secondAttribute="bottom" constant="22.329999999999998" id="fXP-mY-vMA"/>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="trailing" secondItem="EWu-eg-L5e" secondAttribute="trailingMargin" id="iVk-71-9G3"/>
-                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="topMargin" constant="-5" id="x37-8q-Wfz"/>
+                                        <constraint firstAttribute="bottom" secondItem="BRN-Mc-3cK" secondAttribute="bottom" constant="6" id="2SV-Wb-ppg"/>
+                                        <constraint firstAttribute="trailing" secondItem="BRN-Mc-3cK" secondAttribute="trailing" constant="20" id="nfe-Lu-spS"/>
+                                        <constraint firstItem="BRN-Mc-3cK" firstAttribute="top" secondItem="EWu-eg-L5e" secondAttribute="top" constant="6" id="vhe-Uq-QDa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
