@@ -6,6 +6,9 @@
 /Pods/
 /node_modules/
 
+# temp
+assets/PSDs.7z
+
 ## Build generated
 build/
 DerivedData/
