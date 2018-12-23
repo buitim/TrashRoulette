@@ -1,4 +1,4 @@
-[![banner](assets/banner.png)]()
+[![banner](assets/banner.png)](#)
 
 My first iOS app written in Swift just to play around with [AniList's API](https://github.com/AniList/ApiV2-GraphQL-Docs). Pretty crap... but it works?
 
