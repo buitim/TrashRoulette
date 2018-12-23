@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Trash Roulette-->
+        <!--TrashRoulette-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="rouletteViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,13 +36,13 @@
                             <stackView opaque="NO" contentMode="center" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aDG-ov-2YL">
                                 <rect key="frame" x="15" y="348" width="384" height="57.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text=" sfdasdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="32.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="27"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" sfasdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
                                         <rect key="frame" x="0.0" y="40.333333333333314" width="384" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -87,7 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Trash Roulette" id="VWi-hI-GpX"/>
+                    <navigationItem key="navigationItem" title="TrashRoulette" id="VWi-hI-GpX"/>
                     <connections>
                         <outlet property="isAiringUISwitch" destination="6hI-xR-N2n" id="bxF-f0-9Fw"/>
                         <outlet property="searchQueryPickerView" destination="4Hv-XF-HAu" id="Ssn-Xp-soV"/>
@@ -117,7 +117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZT0-eo-Ryq">
-                                            <rect key="frame" x="20" y="11" width="283" height="55"/>
+                                            <rect key="frame" x="20" y="11" width="283" height="54"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
                                                     <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
@@ -220,7 +220,7 @@
         <scene sceneID="ARE-ab-v7J">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0IE-5s-mHE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Roulette" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Roulette" image="shuffle-icon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mhf-Ha-lvi">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
@@ -237,6 +237,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="shuffle-icon" width="25" height="25"/>
     </resources>
 </document>
