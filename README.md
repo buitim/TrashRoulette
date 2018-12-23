@@ -10,7 +10,7 @@ Alternatively, you can compile from source.
 
 ## Screenshots
 
-![preview](assets/screenshots/preview.png)
+[![preview](assets/screenshots/preview.png)](#)
 
 ## Usage
 
