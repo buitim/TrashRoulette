@@ -6,8 +6,7 @@
 /Pods/
 /node_modules/
 
-# temp
-assets/PSDs.7z
+assets/PSDs/
 
 ## Build generated
 build/
