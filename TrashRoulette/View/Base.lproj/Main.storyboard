@@ -53,7 +53,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="k67-yV-lZl">
                                 <rect key="frame" x="52" y="596" width="311" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Currently Airing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnI-Ea-Vjb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Current Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnI-Ea-Vjb">
                                         <rect key="frame" x="0.0" y="0.0" width="213" height="31"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -252,7 +252,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1vu-78-bc5">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1vu-78-bc5">
                                             <rect key="frame" x="20" y="0.0" width="356" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -278,7 +278,7 @@
         <scene sceneID="8G9-2k-BxA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9GS-lM-q72" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="rDH-Eb-MuY"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-cog" id="rDH-Eb-MuY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Nja-At-1g2">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
@@ -295,6 +295,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="settings-cog" width="25" height="25"/>
         <image name="shuffle-icon" width="25" height="25"/>
     </resources>
 </document>
