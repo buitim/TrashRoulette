@@ -1,6 +1,8 @@
-[![banner](assets/banner.png)](#)
+[![banner](assets/banner.png)](#) [![Build Status](https://app.bitrise.io/app/809c2db503fc777b/status.svg?token=aPC-LCQx2A_cskwgDFh0fg)](https://app.bitrise.io/app/809c2db503fc777b) ![](https://img.shields.io/github/issues/buitim/TrashRoulette.svg) ![](https://img.shields.io/github/license/buitim/TrashRoulette.svg) [![](https://img.shields.io/github/downloads/buitim/TrashRoulette/total.svg)](https://github.com/buitim/TrashRoulette/releases)
 
 My first iOS app written in Swift just to play around with [AniList's API](https://github.com/AniList/ApiV2-GraphQL-Docs). Pretty crap... but it works?
+
+Builds fail because I don't have a dev cert rip.
 
 ## Releases
 
