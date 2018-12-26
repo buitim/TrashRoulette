@@ -28,7 +28,7 @@ Alternatively, you can compile from source.
 
 ## Third-Party Libraries
 
+-   [AniList API](https://github.com/AniList/ApiV2-GraphQL-Docs)
 -   [Apollo GraphQL](https://www.apollographql.com/)
 -   [Imaginary](https://github.com/hyperoslo/Imaginary)
 -   [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
--   [AniList API](https://github.com/AniList/ApiV2-GraphQL-Docs)
