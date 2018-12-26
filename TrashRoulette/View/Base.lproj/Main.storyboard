@@ -117,19 +117,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZT0-eo-Ryq">
-                                            <rect key="frame" x="20" y="11" width="283" height="54"/>
+                                            <rect key="frame" x="20" y="11.000000000000004" width="283" height="50.333333333333343"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-xK-nsF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="26.333333333333332"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="zv7-mG-cOd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Studio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-PR-Sm0">
-                                                    <rect key="frame" x="0.0" y="38" width="283" height="16"/>
+                                                    <rect key="frame" x="0.0" y="34.333333333333336" width="283" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="qqj-oq-2x4"/>
                                                     </constraints>

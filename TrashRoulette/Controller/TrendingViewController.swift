@@ -64,7 +64,12 @@ class TrendingViewController: UITableViewController {
             }
             
             /// Get show title
-            self.tempShowData.title = (index?.title?.romaji)!
+            if (index?.title?.english != nil) {
+                self.tempShowData.title = (index?.title?.english)!
+            } else {
+                self.tempShowData.title = (index?.title?.romaji)!
+            }
+            
             
             /// Get image
             self.tempShowData.imageURL = URL(string: (index?.coverImage?.extraLarge)!)!
