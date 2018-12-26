@@ -78,17 +78,41 @@
 			isa = PBXGroup;
 			children = (
 				013B318621C4E1C300352482 /* GraphQL */,
-				01A532DE21C4CD3A00007297 /* AppDelegate.swift */,
-				01A532E021C4CD3A00007297 /* rouletteViewController.swift */,
-				01A532E221C4CD3A00007297 /* TrendingViewController.swift */,
+				01EAB72221D3A48C002256E9 /* Model */,
+				01EAB72021D3A479002256E9 /* Controller */,
 				013B318421C4E14E00352482 /* API.swift */,
 				013B318121C4E10000352482 /* schema.json */,
-				01A532E421C4CD3A00007297 /* Main.storyboard */,
+				01EAB72121D3A485002256E9 /* View */,
 				01A532E721C4CD3B00007297 /* Assets.xcassets */,
-				01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */,
 				01A532EC21C4CD3B00007297 /* Info.plist */,
 			);
 			path = TrashRoulette;
+			sourceTree = "<group>";
+		};
+		01EAB72021D3A479002256E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				01A532E021C4CD3A00007297 /* rouletteViewController.swift */,
+				01A532E221C4CD3A00007297 /* TrendingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		01EAB72121D3A485002256E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01A532E421C4CD3A00007297 /* Main.storyboard */,
+				01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01EAB72221D3A48C002256E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01A532DE21C4CD3A00007297 /* AppDelegate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6B3ACA9492F0D0BFF777C4B4 /* Frameworks */ = {

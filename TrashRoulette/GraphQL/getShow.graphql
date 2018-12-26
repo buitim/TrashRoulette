@@ -2,7 +2,9 @@ query getAiringShow($genre: String) {
 	Page(page: 1, perPage: 300) {
 		media(
 			genre: $genre
-			status_in: RELEASING
+			# status_in: RELEASING
+			season: WINTER
+			seasonYear: 2019
 			isAdult: false
 			type: ANIME
 			sort: POPULARITY_DESC
@@ -17,6 +19,8 @@ query getAiringShow($genre: String) {
 				english
 				native
 			}
+
+			averageScore
 
 			studios(isMain: true) {
 				nodes {
@@ -45,6 +49,8 @@ query getAllShow($genre: String) {
 				english
 				native
 			}
+
+			averageScore
 
 			studios(isMain: true) {
 				nodes {

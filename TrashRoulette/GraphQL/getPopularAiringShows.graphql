@@ -12,6 +12,7 @@ query getPopularAiringShows($type: MediaType) {
 				romaji
 				english
 			}
+			averageScore
 			coverImage {
 				extraLarge
 			}
@@ -38,6 +39,7 @@ query getPopularShows($type: MediaType) {
 				romaji
 				english
 			}
+			averageScore
 			coverImage {
 				extraLarge
 			}
