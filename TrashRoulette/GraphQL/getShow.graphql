@@ -1,5 +1,5 @@
 query getAiringShow($genre: String) {
-	Page(page: 1, perPage: 100) {
+	Page(page: 1, perPage: 300) {
 		media(
 			genre: $genre
 			status_in: RELEASING
