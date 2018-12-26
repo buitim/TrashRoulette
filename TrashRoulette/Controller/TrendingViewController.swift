@@ -68,12 +68,7 @@ class TrendingViewController: UITableViewController {
             self.tempShowData.rating = averageScoreDisplayText
             
             /// Get show title
-            if (index?.title?.english != nil) {
-                self.tempShowData.title = (index?.title?.english)!
-            } else {
-                self.tempShowData.title = (index?.title?.romaji)!
-            }
-            
+            self.tempShowData.title = (index?.title?.romaji)!
             
             /// Get image
             self.tempShowData.imageURL = URL(string: (index?.coverImage?.extraLarge)!)!
