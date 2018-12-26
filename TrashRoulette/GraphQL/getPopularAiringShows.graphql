@@ -1,7 +1,9 @@
 query getPopularAiringShows($type: MediaType) {
 	Page(page: 1, perPage: 100) {
 		media(
-			status_in: RELEASING
+			# status_in: RELEASING
+			season: WINTER
+			seasonYear: 2019
 			isAdult: false
 			type: $type
 			sort: POPULARITY_DESC

@@ -92,8 +92,8 @@
                         <outlet property="isAiringUISwitch" destination="6hI-xR-N2n" id="bxF-f0-9Fw"/>
                         <outlet property="searchQueryPickerView" destination="4Hv-XF-HAu" id="Ssn-Xp-soV"/>
                         <outlet property="showArt" destination="KQ8-Sj-jQp" id="Pxj-UI-QGb"/>
+                        <outlet property="showRating" destination="A5M-7J-77L" id="gHf-oR-uHa"/>
                         <outlet property="showTitle" destination="KQZ-1w-vlD" id="ZIa-UP-PKg"/>
-                        <outlet property="studioName" destination="A5M-7J-77L" id="gHf-oR-uHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -163,7 +163,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="trendingImageView" destination="BRN-Mc-3cK" id="LEN-fT-mm6"/>
-                                    <outlet property="trendingStudioLabel" destination="UNv-PR-Sm0" id="r1U-BK-gdP"/>
+                                    <outlet property="trendingRatingLabel" destination="UNv-PR-Sm0" id="r1U-BK-gdP"/>
                                     <outlet property="trendingTitleLabel" destination="bcd-xK-nsF" id="d04-Y9-gKF"/>
                                 </connections>
                             </tableViewCell>

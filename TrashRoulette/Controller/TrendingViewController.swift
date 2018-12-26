@@ -12,7 +12,7 @@ import JGProgressHUD
 struct showData {
     var imageURL: URL?
     var title: String?
-    var studio: String?
+    var rating: String?
     
 }
 
@@ -20,7 +20,7 @@ struct showData {
 class TrendingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var trendingTitleLabel: UILabel!
-    @IBOutlet weak var trendingStudioLabel: UILabel!
+    @IBOutlet weak var trendingRatingLabel: UILabel!
     @IBOutlet weak var trendingImageView: UIImageView!
 }
 
@@ -44,7 +44,7 @@ class TrendingViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendingTableCell", for: indexPath) as! TrendingTableViewCell
         
         cell.trendingTitleLabel.text = data[indexPath.row].title
-        cell.trendingStudioLabel.text = data[indexPath.row].studio
+        cell.trendingRatingLabel.text = data[indexPath.row].rating
         cell.trendingImageView.setImage(url: data[indexPath.row].imageURL!)
         cell.trendingImageView.layer.cornerRadius = 7
         
@@ -55,13 +55,17 @@ class TrendingViewController: UITableViewController {
     fileprivate func storeDataInArray(_ data: [GetPopularAiringShowsQuery.Data.Page.Medium?]) {
         for index in data
         {
-            let getStudioNameHelper = index?.studios?.nodes
             
-            if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-                self.tempShowData.studio = (getStudioNameHelper?[0]?.name)!
+            // Get show rating
+            var averageScoreDisplayText:String
+            let averageScoreHolder = index?.averageScore
+            if (averageScoreHolder != nil) {
+                averageScoreDisplayText = "Average Score: \(averageScoreHolder!)%"
             } else {
-                self.tempShowData.studio = "Unknown Studio"
+                averageScoreDisplayText = "Average Score: N/A"
             }
+            
+            self.tempShowData.rating = averageScoreDisplayText
             
             /// Get show title
             if (index?.title?.english != nil) {

@@ -40,7 +40,7 @@ public enum MediaType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodab
 
 public final class GetPopularAiringShowsQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getPopularAiringShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(status_in: RELEASING, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    "query getPopularAiringShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(season: WINTER, seasonYear: 2019, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
 
   public var type: MediaType?
 
@@ -83,7 +83,7 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("media", arguments: ["status_in": "RELEASING", "isAdult": false, "type": GraphQLVariable("type"), "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
+        GraphQLField("media", arguments: ["season": "WINTER", "seasonYear": 2019, "isAdult": false, "type": GraphQLVariable("type"), "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
       ]
 
       public private(set) var resultMap: ResultMap

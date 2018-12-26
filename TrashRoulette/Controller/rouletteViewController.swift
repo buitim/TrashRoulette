@@ -12,7 +12,7 @@ import JGProgressHUD
 class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet var showTitle: UILabel!
-    @IBOutlet var studioName: UILabel!
+    @IBOutlet var showRating: UILabel!
     @IBOutlet weak var showArt: UIImageView!
     @IBOutlet weak var searchQueryPickerView: UIPickerView!
     @IBOutlet weak var isAiringUISwitch: UISwitch!
@@ -63,14 +63,16 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Grab random value out of the shows grabbed
         let randomIndex = arc4random_uniform(UInt32(data.count))
         
-        // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
-        let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
-        
-        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-            self.studioName.text = getStudioNameHelper?[0]?.name
+        // Get show rating
+        let averageScoreHolder = data[data.index(Int(randomIndex), offsetBy:0)]?.averageScore
+        var averageScoreDisplayText:String
+        if (averageScoreHolder != nil){
+            averageScoreDisplayText = "Average Score: \(averageScoreHolder!)%"
         } else {
-            self.studioName.text = "Unknown Studio"
+            averageScoreDisplayText = "Average Score: N/A"
         }
+        self.showRating.text = averageScoreDisplayText
+        
         
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
@@ -92,14 +94,15 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Grab random value out of the shows grabbed
         let randomIndex = arc4random_uniform(UInt32(data.count))
         
-        // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
-        let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
-        
-        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-            self.studioName.text = getStudioNameHelper?[0]?.name
+        // Get show rating
+        let averageScoreHolder = data[data.index(Int(randomIndex), offsetBy:0)]?.averageScore
+        var averageScoreDisplayText:String
+        if (averageScoreHolder != nil){
+            averageScoreDisplayText = "Average Score: \(averageScoreHolder!)%"
         } else {
-            self.studioName.text = "Unknown Studio"
+            averageScoreDisplayText = "Average Score: N/A"
         }
+        self.showRating.text = averageScoreDisplayText
         
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
@@ -152,13 +155,15 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // MARK: Grab data for popular seasonal shows
     fileprivate func grabPopularData(_ data: [GetPopularAiringShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
         
-        let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
-        
-        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-            self.studioName.text = getStudioNameHelper?[0]?.name
+        // Get show rating
+        let averageScoreHolder = data[data.index(Int(randomIndex), offsetBy:0)]?.averageScore
+        var averageScoreDisplayText:String
+        if (averageScoreHolder != nil){
+            averageScoreDisplayText = "Average Score: \(averageScoreHolder!)%"
         } else {
-            self.studioName.text = "Unknown Studio"
+            averageScoreDisplayText = "Average Score: N/A"
         }
+        self.showRating.text = averageScoreDisplayText
         
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
@@ -179,13 +184,15 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     fileprivate func grabPopularData(_ data: [GetPopularShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
         // DEBUG
         
-        let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
-        
-        if (getStudioNameHelper?.isEmpty == false) { // Check to see if a name was actually grabbed
-            self.studioName.text = getStudioNameHelper?[0]?.name
+        // Get show rating
+        let averageScoreHolder = data[data.index(Int(randomIndex), offsetBy:0)]?.averageScore
+        var averageScoreDisplayText:String
+        if (averageScoreHolder != nil){
+            averageScoreDisplayText = "Average Score: \(averageScoreHolder!)%"
         } else {
-            self.studioName.text = "Unknown Studio"
+            averageScoreDisplayText = "Average Score: N/A"
         }
+        self.showRating.text = averageScoreDisplayText
         
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
