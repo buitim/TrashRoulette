@@ -40,7 +40,7 @@ public enum MediaType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodab
 
 public final class GetPopularAiringShowsQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getPopularAiringShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(status_in: RELEASING, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    "query getPopularAiringShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(status_in: RELEASING, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
 
   public var type: MediaType?
 
@@ -120,6 +120,7 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("title", type: .object(Title.selections)),
+          GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("coverImage", type: .object(CoverImage.selections)),
           GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("studios", arguments: ["isMain": true], type: .object(Studio.selections)),
@@ -131,8 +132,8 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: Title? = nil, coverImage: CoverImage? = nil, averageScore: Int? = nil, studios: Studio? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Media", "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "averageScore": averageScore, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
+        public init(title: Title? = nil, averageScore: Int? = nil, coverImage: CoverImage? = nil, studios: Studio? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Media", "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "averageScore": averageScore, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -154,16 +155,6 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
           }
         }
 
-        /// The cover images of the media
-        public var coverImage: CoverImage? {
-          get {
-            return (resultMap["coverImage"] as? ResultMap).flatMap { CoverImage(unsafeResultMap: $0) }
-          }
-          set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "coverImage")
-          }
-        }
-
         /// A weighted average score of all the user's scores of the media
         public var averageScore: Int? {
           get {
@@ -171,6 +162,16 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "averageScore")
+          }
+        }
+
+        /// The cover images of the media
+        public var coverImage: CoverImage? {
+          get {
+            return (resultMap["coverImage"] as? ResultMap).flatMap { CoverImage(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "coverImage")
           }
         }
 
@@ -352,7 +353,7 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
 
 public final class GetPopularShowsQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getPopularShows($type: MediaType) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    "query getPopularShows($type: MediaType) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
 
   public var type: MediaType?
 
@@ -432,6 +433,7 @@ public final class GetPopularShowsQuery: GraphQLQuery {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("title", type: .object(Title.selections)),
+          GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("coverImage", type: .object(CoverImage.selections)),
           GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("studios", arguments: ["isMain": true], type: .object(Studio.selections)),
@@ -443,8 +445,8 @@ public final class GetPopularShowsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(title: Title? = nil, coverImage: CoverImage? = nil, averageScore: Int? = nil, studios: Studio? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Media", "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "averageScore": averageScore, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
+        public init(title: Title? = nil, averageScore: Int? = nil, coverImage: CoverImage? = nil, studios: Studio? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Media", "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "averageScore": averageScore, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -466,16 +468,6 @@ public final class GetPopularShowsQuery: GraphQLQuery {
           }
         }
 
-        /// The cover images of the media
-        public var coverImage: CoverImage? {
-          get {
-            return (resultMap["coverImage"] as? ResultMap).flatMap { CoverImage(unsafeResultMap: $0) }
-          }
-          set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "coverImage")
-          }
-        }
-
         /// A weighted average score of all the user's scores of the media
         public var averageScore: Int? {
           get {
@@ -483,6 +475,16 @@ public final class GetPopularShowsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "averageScore")
+          }
+        }
+
+        /// The cover images of the media
+        public var coverImage: CoverImage? {
+          get {
+            return (resultMap["coverImage"] as? ResultMap).flatMap { CoverImage(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "coverImage")
           }
         }
 
@@ -664,7 +666,7 @@ public final class GetPopularShowsQuery: GraphQLQuery {
 
 public final class GetAiringShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getAiringShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, season: WINTER, seasonYear: 2019, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    "query getAiringShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, season: WINTER, seasonYear: 2019, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
 
   public var genre: String?
 
@@ -745,6 +747,7 @@ public final class GetAiringShowQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("coverImage", type: .object(CoverImage.selections)),
           GraphQLField("title", type: .object(Title.selections)),
+          GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("studios", arguments: ["isMain": true], type: .object(Studio.selections)),
         ]
 
@@ -754,8 +757,8 @@ public final class GetAiringShowQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(coverImage: CoverImage? = nil, title: Title? = nil, studios: Studio? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Media", "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
+        public init(coverImage: CoverImage? = nil, title: Title? = nil, averageScore: Int? = nil, studios: Studio? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Media", "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "averageScore": averageScore, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -784,6 +787,16 @@ public final class GetAiringShowQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue?.resultMap, forKey: "title")
+          }
+        }
+
+        /// A weighted average score of all the user's scores of the media
+        public var averageScore: Int? {
+          get {
+            return resultMap["averageScore"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "averageScore")
           }
         }
 
@@ -976,7 +989,7 @@ public final class GetAiringShowQuery: GraphQLQuery {
 
 public final class GetAllShowQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getAllShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    "query getAllShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
 
   public var genre: String?
 
@@ -1057,6 +1070,7 @@ public final class GetAllShowQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("coverImage", type: .object(CoverImage.selections)),
           GraphQLField("title", type: .object(Title.selections)),
+          GraphQLField("averageScore", type: .scalar(Int.self)),
           GraphQLField("studios", arguments: ["isMain": true], type: .object(Studio.selections)),
         ]
 
@@ -1066,8 +1080,8 @@ public final class GetAllShowQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(coverImage: CoverImage? = nil, title: Title? = nil, studios: Studio? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Media", "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
+        public init(coverImage: CoverImage? = nil, title: Title? = nil, averageScore: Int? = nil, studios: Studio? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Media", "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "averageScore": averageScore, "studios": studios.flatMap { (value: Studio) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -1096,6 +1110,16 @@ public final class GetAllShowQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue?.resultMap, forKey: "title")
+          }
+        }
+
+        /// A weighted average score of all the user's scores of the media
+        public var averageScore: Int? {
+          get {
+            return resultMap["averageScore"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "averageScore")
           }
         }
 

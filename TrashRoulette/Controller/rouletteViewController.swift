@@ -60,7 +60,6 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     fileprivate func grabData(_ data: [GetAiringShowQuery.Data.Page.Medium?]) {
         // Grab random value out of the shows grabbed
         let randomIndex = arc4random_uniform(UInt32(data.count))
-        print("== Random Index: \(randomIndex)") // DEBUG
         
         // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
         let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
@@ -82,7 +81,6 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     fileprivate func grabData(_ data: [GetAllShowQuery.Data.Page.Medium?]) {
         // Grab random value out of the shows grabbed
         let randomIndex = arc4random_uniform(UInt32(data.count))
-        print("== Random Index: \(randomIndex)") // DEBUG
         
         // Get studio name via hacky method... tried using nodes[0] but swift didn't like that
         let getStudioNameHelper = data[data.index(Int(randomIndex), offsetBy:0)]?.studios?.nodes
@@ -94,7 +92,14 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         // Get show title
-        self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+        if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
+            // If an english title exists, use it
+            print("== English Title")
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
+        } else { // Else use the romaji version
+            print("== Romaji Title")
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+        }
         
         // Get image
         let imageURL = URL(string: (data[data.index(Int(randomIndex), offsetBy:0)]?.coverImage?.extraLarge)!)
@@ -135,7 +140,6 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     fileprivate func grabPopularData(_ data: [GetPopularAiringShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
-        // DEBUG
         
         let getStudioNameHelper = data[Int(randomIndex)]?.studios?.nodes
         
@@ -146,7 +150,14 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         // Get show title
-        self.showTitle.text = data[Int(randomIndex)]?.title?.romaji
+        if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
+            // If an english title exists, use it
+            print("== English Title")
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
+        } else { // Else use the romaji version
+            print("== Romaji Title")
+            self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
+        }
         
         // Get image
         let imageURL = URL(string: (data[Int(randomIndex)]?.coverImage?.extraLarge)!)
@@ -193,7 +204,6 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 
                 // Grab random value out of the shows grabbed
                 let randomIndex = arc4random_uniform(UInt32(data.count))
-                print("== Random Index: \(randomIndex)")
                 self.grabPopularData(data, randomIndex)
             }
         } else {
@@ -205,7 +215,6 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 
                 // Grab random value out of the shows grabbed
                 let randomIndex = arc4random_uniform(UInt32(data.count))
-                print("== Random Index: \(randomIndex)")
                 self.grabPopularData(data, randomIndex)
             }
         }
