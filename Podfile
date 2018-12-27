@@ -9,5 +9,4 @@ target 'TrashRoulette' do
   pod 'Apollo', '~> 0.9'
   pod 'Imaginary', '~> 4.2'
   pod 'JGProgressHUD'
-  pod 'QuickTableViewController'
 end

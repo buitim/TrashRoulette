@@ -10,20 +10,21 @@
 		013B318221C4E10000352482 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 013B318121C4E10000352482 /* schema.json */; };
 		013B318521C4E14E00352482 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B318421C4E14E00352482 /* API.swift */; };
 		013B318A21C4E36900352482 /* getShow.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 013B318921C4E36900352482 /* getShow.graphql */; };
+		0167B91721D45409001B4AA0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167B91621D45409001B4AA0 /* SettingsViewController.swift */; };
 		01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532DE21C4CD3A00007297 /* AppDelegate.swift */; };
 		01A532E121C4CD3A00007297 /* rouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E021C4CD3A00007297 /* rouletteViewController.swift */; };
 		01A532E321C4CD3A00007297 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A532E221C4CD3A00007297 /* TrendingViewController.swift */; };
 		01A532E621C4CD3A00007297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E421C4CD3A00007297 /* Main.storyboard */; };
 		01A532E821C4CD3B00007297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E721C4CD3B00007297 /* Assets.xcassets */; };
 		01A532EB21C4CD3B00007297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */; };
-		9342C3579383C5BA017E0718 /* Pods_TrashRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */; };
+		0626FFE03355EDABC3644D84 /* Pods_TrashRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8540C5B34D875BA38484DF7C /* Pods_TrashRoulette.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.debug.xcconfig"; sourceTree = "<group>"; };
 		013B318121C4E10000352482 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		013B318421C4E14E00352482 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		013B318921C4E36900352482 /* getShow.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = getShow.graphql; sourceTree = "<group>"; };
+		0167B91621D45409001B4AA0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01A532DB21C4CD3A00007297 /* TrashRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A532DE21C4CD3A00007297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A532E021C4CD3A00007297 /* rouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rouletteViewController.swift; sourceTree = "<group>"; };
@@ -32,8 +33,9 @@
 		01A532E721C4CD3B00007297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A532EA21C4CD3B00007297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01A532EC21C4CD3B00007297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.release.xcconfig"; sourceTree = "<group>"; };
-		6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		312B41C9201B76C1AEC33CE8 /* Pods-TrashRoulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.debug.xcconfig"; sourceTree = "<group>"; };
+		55611A567F1D6001B9E5F88C /* Pods-TrashRoulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.release.xcconfig"; sourceTree = "<group>"; };
+		8540C5B34D875BA38484DF7C /* Pods_TrashRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9342C3579383C5BA017E0718 /* Pods_TrashRoulette.framework in Frameworks */,
+				0626FFE03355EDABC3644D84 /* Pods_TrashRoulette.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +63,8 @@
 			children = (
 				01A532DD21C4CD3A00007297 /* TrashRoulette */,
 				01A532DC21C4CD3A00007297 /* Products */,
-				AAAB0829D9916E31852DAEDB /* Pods */,
-				6B3ACA9492F0D0BFF777C4B4 /* Frameworks */,
+				7F3B4344CB8B7B2580E47F80 /* Pods */,
+				1DC524891BB90EE9A9A899CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +96,7 @@
 			children = (
 				01A532E021C4CD3A00007297 /* rouletteViewController.swift */,
 				01A532E221C4CD3A00007297 /* TrendingViewController.swift */,
+				0167B91621D45409001B4AA0 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,19 +118,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6B3ACA9492F0D0BFF777C4B4 /* Frameworks */ = {
+		1DC524891BB90EE9A9A899CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6441A8B9EABABDBC6C48BD6F /* Pods_TrashRoulette.framework */,
+				8540C5B34D875BA38484DF7C /* Pods_TrashRoulette.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AAAB0829D9916E31852DAEDB /* Pods */ = {
+		7F3B4344CB8B7B2580E47F80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */,
-				22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */,
+				312B41C9201B76C1AEC33CE8 /* Pods-TrashRoulette.debug.xcconfig */,
+				55611A567F1D6001B9E5F88C /* Pods-TrashRoulette.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -139,12 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01A532EF21C4CD3B00007297 /* Build configuration list for PBXNativeTarget "TrashRoulette" */;
 			buildPhases = (
-				405CF8AADB83F06221B91368 /* [CP] Check Pods Manifest.lock */,
+				E728616C829151B4674F5543 /* [CP] Check Pods Manifest.lock */,
 				013B317C21C4D20100352482 /* Generate Apollo GraphQL API */,
 				01A532D721C4CD3A00007297 /* Sources */,
 				01A532D821C4CD3A00007297 /* Frameworks */,
 				01A532D921C4CD3A00007297 /* Resources */,
-				40A98E3D6B154225C0F3F457 /* [CP] Embed Pods Frameworks */,
+				FA33B95A3F85C49711B07E15 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,7 +225,7 @@
 			shellPath = /bin/sh;
 			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
 		};
-		405CF8AADB83F06221B91368 /* [CP] Check Pods Manifest.lock */ = {
+		E728616C829151B4674F5543 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,7 +247,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		40A98E3D6B154225C0F3F457 /* [CP] Embed Pods Frameworks */ = {
+		FA33B95A3F85C49711B07E15 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,7 +260,6 @@
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -267,7 +269,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -284,6 +285,7 @@
 				01A532E321C4CD3A00007297 /* TrendingViewController.swift in Sources */,
 				01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */,
 				013B318521C4E14E00352482 /* API.swift in Sources */,
+				0167B91721D45409001B4AA0 /* SettingsViewController.swift in Sources */,
 				01A532E121C4CD3A00007297 /* rouletteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +430,7 @@
 		};
 		01A532F021C4CD3B00007297 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 004F5873999ECA3B22A1B104 /* Pods-TrashRoulette.debug.xcconfig */;
+			baseConfigurationReference = 312B41C9201B76C1AEC33CE8 /* Pods-TrashRoulette.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,7 +450,7 @@
 		};
 		01A532F121C4CD3B00007297 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22A7A82CB46B6129C059769F /* Pods-TrashRoulette.release.xcconfig */;
+			baseConfigurationReference = 55611A567F1D6001B9E5F88C /* Pods-TrashRoulette.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
