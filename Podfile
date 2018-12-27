@@ -10,4 +10,5 @@ target 'TrashRoulette' do
   pod 'Imaginary', '~> 4.2'
   pod 'JGProgressHUD'
   pod 'QuickTableViewController'
+  pod 'PickerPopupDialog'
 end
