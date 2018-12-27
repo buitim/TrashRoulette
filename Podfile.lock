@@ -6,11 +6,13 @@ PODS:
   - Imaginary (4.2.0):
     - Cache (~> 5.0)
   - JGProgressHUD (2.0.3)
+  - QuickTableViewController (1.0.0)
 
 DEPENDENCIES:
   - Apollo (~> 0.9)
   - Imaginary (~> 4.2)
   - JGProgressHUD
+  - QuickTableViewController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - Cache
     - Imaginary
     - JGProgressHUD
+    - QuickTableViewController
 
 SPEC CHECKSUMS:
   Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  QuickTableViewController: a49fb6dc5623b9dbe301a03ac5c563099e234fbc
 
-PODFILE CHECKSUM: 0cbc07e4af2d933baafbe0b7e8c0040e497686d2
+PODFILE CHECKSUM: 4f67aaa0faa5310e147b22f77d56a4481c5091a7
 
 COCOAPODS: 1.5.3
