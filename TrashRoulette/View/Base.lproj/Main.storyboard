@@ -198,11 +198,11 @@
             </objects>
             <point key="canvasLocation" x="-36" y="27"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Top Airing-->
         <scene sceneID="0Em-Vf-2ai">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rkk-dh-eY7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="XeI-q1-yUd"/>
+                    <tabBarItem key="tabBarItem" title="Top Airing" image="top-airing" id="XeI-q1-yUd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="3KJ-Ju-4dX">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
@@ -307,5 +307,6 @@
     <resources>
         <image name="settings-cog" width="25" height="25"/>
         <image name="shuffle-icon" width="25" height="25"/>
+        <image name="top-airing" width="25" height="25"/>
     </resources>
 </document>
