@@ -34,6 +34,7 @@ class rouletteViewController: UIViewController {
         // Set Genre label to current roulette query ("Popular" by default)
         self.genreLabel.text = rouletteQuery
         genreLabel.numberOfLines = 1
+        genreLabel.textAlignment = .right
         genreLabel.sizeToFit()
         
         // Set picker data source
