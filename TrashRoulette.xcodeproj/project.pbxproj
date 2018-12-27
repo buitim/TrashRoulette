@@ -17,6 +17,7 @@
 		01A532E621C4CD3A00007297 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E421C4CD3A00007297 /* Main.storyboard */; };
 		01A532E821C4CD3B00007297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E721C4CD3B00007297 /* Assets.xcassets */; };
 		01A532EB21C4CD3B00007297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A532E921C4CD3B00007297 /* LaunchScreen.storyboard */; };
+		01B4E76621D4785C00EDCC37 /* AttributionTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B4E76521D4785C00EDCC37 /* AttributionTableViewContoller.swift */; };
 		0626FFE03355EDABC3644D84 /* Pods_TrashRoulette.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8540C5B34D875BA38484DF7C /* Pods_TrashRoulette.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		01A532E721C4CD3B00007297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A532EA21C4CD3B00007297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01A532EC21C4CD3B00007297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01B4E76521D4785C00EDCC37 /* AttributionTableViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionTableViewContoller.swift; sourceTree = "<group>"; };
 		312B41C9201B76C1AEC33CE8 /* Pods-TrashRoulette.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.debug.xcconfig"; sourceTree = "<group>"; };
 		55611A567F1D6001B9E5F88C /* Pods-TrashRoulette.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrashRoulette.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrashRoulette/Pods-TrashRoulette.release.xcconfig"; sourceTree = "<group>"; };
 		8540C5B34D875BA38484DF7C /* Pods_TrashRoulette.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrashRoulette.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				01A532E021C4CD3A00007297 /* rouletteViewController.swift */,
 				01A532E221C4CD3A00007297 /* TrendingViewController.swift */,
 				0167B91621D45409001B4AA0 /* SettingsViewController.swift */,
+				01B4E76521D4785C00EDCC37 /* AttributionTableViewContoller.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B4E76621D4785C00EDCC37 /* AttributionTableViewContoller.swift in Sources */,
 				01A532E321C4CD3A00007297 /* TrendingViewController.swift in Sources */,
 				01A532DF21C4CD3A00007297 /* AppDelegate.swift in Sources */,
 				013B318521C4E14E00352482 /* API.swift in Sources */,

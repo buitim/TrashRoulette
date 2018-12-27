@@ -262,27 +262,40 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="wFH-gp-jdI"/>
                     <connections>
-                        <segue destination="JcZ-Qq-wZj" kind="show" identifier="AttributionViewSegue" id="xyA-aQ-gze"/>
+                        <segue destination="fiD-uI-v12" kind="show" identifier="AttributionViewSegue" id="UFZ-Je-tcX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6r0-aK-mqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1655.072463768116" y="1186.9565217391305"/>
         </scene>
-        <!--Attribution View Controller-->
-        <scene sceneID="Fc3-aw-RVM">
+        <!--Attribution-->
+        <scene sceneID="Jeb-h0-q7z">
             <objects>
-                <viewController id="JcZ-Qq-wZj" customClass="AttributionViewController" customModule="TrashRoulette" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4KD-2e-aIS">
+                <tableViewController title="Attribution" id="fiD-uI-v12" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lpS-uF-n5c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="DKo-9a-100"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8bu-zc-S4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WpU-Ry-0LG">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WpU-Ry-0LG" id="qlI-VZ-adw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fiD-uI-v12" id="raZ-TX-LRr"/>
+                            <outlet property="delegate" destination="fiD-uI-v12" id="45H-Tk-O5u"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C1b-MD-AuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2491" y="1187"/>
+            <point key="canvasLocation" x="2439" y="1187"/>
         </scene>
         <!--Settings-->
         <scene sceneID="8G9-2k-BxA">
