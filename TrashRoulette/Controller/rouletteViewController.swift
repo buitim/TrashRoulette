@@ -10,49 +10,39 @@ import UIKit
 import JGProgressHUD
 import PickerPopupDialog
 
-class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class rouletteViewController: UIViewController {
     
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var showRating: UILabel!
     @IBOutlet weak var showArt: UIImageView!
-    @IBOutlet weak var searchQueryPickerView: UIPickerView!
     @IBOutlet weak var isAiringUISwitch: UISwitch!
     
-    let queryTypes = ["Popular", "Action", "Romance", "Comedy", "Adventure", "Drama", "Ecchi", "Fantasy", "Horror", "Mahou Shoujo", "Mecha", "Music", "Mystery", "Psychological", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller"]
+    // Initialize picker
+    let pickerView = PickerPopupDialog()
+    let pickerQueryTypes : [(Any, String)] = [(1, "Popular"), (2, "Action"), (3, "Romance"), (4, "Comedy"), (5, "Adventure"), (6, "Drama"), (7, "Ecchi"), (8, "Fantasy"), (9, "Horror"), (10, "Mahou Shoujo"), (11, "Mecha"), (12, "Music"), (13, "Mystery"), (14, "Psychological"), (15, "Sci-Fi"), (16, "Slice of Life"), (17, "Sports"), (18, "Supernatural"), (19, "Thriller")]
     var rouletteQuery: String = "Popular"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Set picker
-        let pickerView = PickerPopupDialog()
-        let myDataSource : [(Any, String)] = [(1, "Popular"), (2, "Action"), (3, "Romance"), (4, "Comedy"), (5, "Adventure"), (6, "Drama"), (7, "Ecchi"), (8, "Fantasy"), (9, "Horror"), (10, "Mahou Shoujo"), (11, "Mecha"), (12, "Music"), (13, "Mystery"), (14, "Psychological"), (15, "Sci-Fi"), (16, "Slice of Life"), (17, "Sports"), (18, "Supernatural"), (19, "Thriller")]
-        pickerView.setDataSource(myDataSource)
+        // Set picker data source
+        pickerView.setDataSource(pickerQueryTypes)
         
         // Initialize view
         showArt.layer.cornerRadius = 20
-        searchQueryPickerView.delegate = self
-        searchQueryPickerView.dataSource = self
         isAiringUISwitch.setOn(true, animated: false)
         grabPopular()
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return queryTypes.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return queryTypes[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        rouletteQuery = queryTypes[row]
+    @IBAction func invokeChangeGenrePicker(_ sender: Any) {
+        pickerView.showDialog("Select Genre", doneButtonTitle: "Ok", cancelButtonTitle: "Cancel") { (result) -> Void in
+            
+            self.rouletteQuery = result.1
+            
+            // close window
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func doLetJesusTakeTheWheel(_ sender: Any) {

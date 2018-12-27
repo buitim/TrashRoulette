@@ -64,23 +64,25 @@
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hv-XF-HAu">
-                                <rect key="frame" x="0.0" y="387" width="414" height="216"/>
-                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-E5-2PL">
+                                <rect key="frame" x="158" y="479" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Genre"/>
+                                <connections>
+                                    <action selector="invokeChangeGenrePicker:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Y0h-EG-HKK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wgN-0p-RPl" firstAttribute="top" secondItem="k67-yV-lZl" secondAttribute="bottom" constant="5" id="1Ey-p2-oX3"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="4Hv-XF-HAu" secondAttribute="bottom" constant="84" id="29E-Va-oeH"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="KQ8-Sj-jQp" secondAttribute="trailing" constant="10" id="Ewb-rG-HHj"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="wgN-0p-RPl" secondAttribute="bottom" constant="23" id="FG1-4H-AX5"/>
-                            <constraint firstItem="4Hv-XF-HAu" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="HNP-fj-WWM"/>
                             <constraint firstItem="aDG-ov-2YL" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="15" id="PRj-0b-T4f"/>
                             <constraint firstItem="wgN-0p-RPl" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="R3L-ae-wCM"/>
                             <constraint firstItem="k67-yV-lZl" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="52" id="VOL-tO-Xje"/>
                             <constraint firstItem="KQ8-Sj-jQp" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="10" id="WNY-hf-esT"/>
                             <constraint firstItem="KQ8-Sj-jQp" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="15" id="Y68-WB-oW7"/>
-                            <constraint firstItem="4Hv-XF-HAu" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="aw5-IY-07d"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="aDG-ov-2YL" secondAttribute="trailing" constant="15" id="pQD-Am-HU7"/>
                             <constraint firstItem="aDG-ov-2YL" firstAttribute="top" secondItem="KQ8-Sj-jQp" secondAttribute="bottom" constant="8" id="vEv-ai-JWt"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="k67-yV-lZl" secondAttribute="trailing" constant="51" id="xuh-s7-zRx"/>
@@ -90,7 +92,6 @@
                     <navigationItem key="navigationItem" title="TrashRoulette" id="VWi-hI-GpX"/>
                     <connections>
                         <outlet property="isAiringUISwitch" destination="6hI-xR-N2n" id="bxF-f0-9Fw"/>
-                        <outlet property="searchQueryPickerView" destination="4Hv-XF-HAu" id="Ssn-Xp-soV"/>
                         <outlet property="showArt" destination="KQ8-Sj-jQp" id="Pxj-UI-QGb"/>
                         <outlet property="showRating" destination="A5M-7J-77L" id="gHf-oR-uHa"/>
                         <outlet property="showTitle" destination="KQZ-1w-vlD" id="ZIa-UP-PKg"/>
