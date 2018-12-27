@@ -173,7 +173,7 @@
                             <outlet property="delegate" destination="cEY-fX-6j0" id="sKa-aQ-Jnm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Seasonal" id="cFE-QV-Gal"/>
+                    <navigationItem key="navigationItem" title="Top Airing" id="cFE-QV-Gal"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMN-Nx-PwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

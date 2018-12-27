@@ -28,6 +28,36 @@ query getPopularAiringShows($type: MediaType) {
 	}
 }
 
+query getPopularReleasingShows($type: MediaType) {
+	Page(page: 1, perPage: 100) {
+		media(
+			status_in: RELEASING
+			# season: WINTER
+			# seasonYear: 2019
+			isAdult: false
+			type: $type
+			sort: POPULARITY_DESC
+			format: TV
+			countryOfOrigin: JP
+		) {
+			title {
+				romaji
+				english
+			}
+			averageScore
+			coverImage {
+				extraLarge
+			}
+			averageScore
+			studios(isMain: true) {
+				nodes {
+					name
+				}
+			}
+		}
+	}
+}
+
 query getPopularShows($type: MediaType) {
 	Page(page: 1, perPage: 300) {
 		media(

@@ -52,7 +52,7 @@ class TrendingViewController: UITableViewController {
     }
     
     
-    fileprivate func storeDataInArray(_ data: [GetPopularAiringShowsQuery.Data.Page.Medium?]) {
+    fileprivate func storeDataInArray(_ data: [GetPopularReleasingShowsQuery.Data.Page.Medium?]) {
         for index in data
         {
             
@@ -101,7 +101,7 @@ class TrendingViewController: UITableViewController {
         showHUD(hud)
         
         //MARK: Run Query
-        apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
+        apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
             guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
             
             //MARK: Dismiss HUD
