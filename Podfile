@@ -6,9 +6,10 @@ target 'TrashRoulette' do
   use_frameworks!
 
   # Pods for TrashRoulette
-  pod 'Apollo', '~> 0.9'
-  pod 'Imaginary', '~> 4.2'
+  pod 'Apollo'
+  pod 'Imaginary'
   pod 'JGProgressHUD'
   pod 'QuickTableViewController'
   pod 'PickerPopupDialog'
+  pod 'LGButton'
 end

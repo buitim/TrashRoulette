@@ -14,6 +14,7 @@ class rouletteViewController: UIViewController {
     
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var showRating: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var showArt: UIImageView!
     @IBOutlet weak var isAiringUISwitch: UISwitch!
     
@@ -25,6 +26,15 @@ class rouletteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Clear Title and Rating
+        self.showTitle.text = ""
+        self.showRating.text = ""
+        
+        // Set Genre label to current roulette query ("Popular" by default)
+        self.genreLabel.text = rouletteQuery
+        genreLabel.numberOfLines = 1
+        genreLabel.sizeToFit()
         
         // Set picker data source
         pickerView.setDataSource(pickerQueryTypes)
@@ -39,6 +49,7 @@ class rouletteViewController: UIViewController {
         pickerView.showDialog("Select Genre", doneButtonTitle: "Ok", cancelButtonTitle: "Cancel") { (result) -> Void in
             
             self.rouletteQuery = result.1
+            self.genreLabel.text = result.1
             
             // close window
             self.dismiss(animated: true, completion: nil)

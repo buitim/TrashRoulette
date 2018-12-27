@@ -32,5 +32,6 @@ Alternatively, you can compile from source.
 -   [Apollo GraphQL](https://www.apollographql.com/)
 -   [Imaginary](https://github.com/hyperoslo/Imaginary)
 -   [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
+-   [LGButton](https://github.com/loregr/LGButton)
 -   [PickerPopupDialog](https://github.com/ribasal1/PickerPopupDialog)
 -   [QuickTableViewController](https://github.com/bcylin/QuickTableViewController)
