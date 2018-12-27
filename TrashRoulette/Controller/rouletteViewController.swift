@@ -47,7 +47,7 @@ class rouletteViewController: UIViewController {
     }
     
     @IBAction func invokeChangeGenrePicker(_ sender: Any) {
-        pickerView.showDialog("Select Genre", doneButtonTitle: "Ok", cancelButtonTitle: "Cancel") { (result) -> Void in
+        pickerView.showDialog("Select Genre", doneButtonTitle: "Select", cancelButtonTitle: "Cancel") { (result) -> Void in
             
             self.rouletteQuery = result.1
             self.genreLabel.text = result.1
