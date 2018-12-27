@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import PickerPopupDialog
 
 class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -24,6 +25,12 @@ class rouletteViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Set picker
+        let pickerView = PickerPopupDialog()
+        let myDataSource : [(Any, String)] = [(1, "Popular"), (2, "Action"), (3, "Romance"), (4, "Comedy"), (5, "Adventure"), (6, "Drama"), (7, "Ecchi"), (8, "Fantasy"), (9, "Horror"), (10, "Mahou Shoujo"), (11, "Mecha"), (12, "Music"), (13, "Mystery"), (14, "Psychological"), (15, "Sci-Fi"), (16, "Slice of Life"), (17, "Sports"), (18, "Supernatural"), (19, "Thriller")]
+        pickerView.setDataSource(myDataSource)
+        
+        // Initialize view
         showArt.layer.cornerRadius = 20
         searchQueryPickerView.delegate = self
         searchQueryPickerView.dataSource = self
