@@ -13,6 +13,7 @@ target 'TrashRoulette' do
   pod 'PickerPopupDialog'
   pod 'LGButton'
   pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
   pod 'Google-Mobile-Ads-SDK'
 
 end

@@ -3,6 +3,9 @@ PODS:
     - Apollo/Core (= 0.9.4)
   - Apollo/Core (0.9.4)
   - Cache (5.2.0)
+  - Firebase/AdMob (5.15.0):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (~> 7.37)
   - Firebase/Core (5.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.4.0)
@@ -62,6 +65,7 @@ PODS:
 
 DEPENDENCIES:
   - Apollo
+  - Firebase/AdMob
   - Firebase/Core
   - Google-Mobile-Ads-SDK
   - Imaginary
@@ -105,6 +109,6 @@ SPEC CHECKSUMS:
   PickerPopupDialog: 3a9a3a0545ca3fd9a056db039fda04e63b0fc4cb
   QuickTableViewController: a49fb6dc5623b9dbe301a03ac5c563099e234fbc
 
-PODFILE CHECKSUM: a8469ed98d036ccf7aa50e94e5351e413fe04a71
+PODFILE CHECKSUM: e8ea76d7d54136a6b96ceafb89c6f4bc632bf127
 
 COCOAPODS: 1.5.3

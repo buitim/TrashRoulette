@@ -1,5 +1,5 @@
 query getPopularAiringShows($type: MediaType) {
-	Page(page: 1, perPage: 100) {
+	Page(page: 1, perPage: 300) {
 		media(
 			# status_in: RELEASING
 			season: WINTER
@@ -29,7 +29,7 @@ query getPopularAiringShows($type: MediaType) {
 }
 
 query getPopularReleasingShows($type: MediaType) {
-	Page(page: 1, perPage: 100) {
+	Page(page: 1, perPage: 50) {
 		media(
 			status_in: RELEASING
 			# season: WINTER
@@ -59,7 +59,7 @@ query getPopularReleasingShows($type: MediaType) {
 }
 
 query getPopularShows($type: MediaType) {
-	Page(page: 1, perPage: 300) {
+	Page(page: 1, perPage: 50) {
 		media(
 			isAdult: false
 			type: $type
