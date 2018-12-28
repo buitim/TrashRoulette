@@ -5,6 +5,7 @@
 .DS_Store
 /Pods/
 /node_modules/
+/TrashRoulette/GoogleService-Info.plist
 
 assets/PSDs/
 

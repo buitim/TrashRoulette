@@ -9,6 +9,8 @@
 import Apollo
 import Imaginary
 import UIKit
+import Firebase
+import GoogleMobileAds
 
 let graphQLEndpoint = "https://graphql.anilist.co"
 let apollo = ApolloClient(url: URL(string: graphQLEndpoint)!)
@@ -20,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
         UIApplication.shared.isStatusBarHidden = false
+        
+        FirebaseApp.configure()
+        
+        // Initialize the Google Mobile Ads SDK.
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-1587859735442776~3150637719")
+        
 		return true
 	}
 

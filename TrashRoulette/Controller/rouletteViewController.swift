@@ -12,6 +12,7 @@ import PickerPopupDialog
 
 class rouletteViewController: UIViewController {
     
+    // MARK: Interface Builder Outlets because I'm a lazy scrub
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var showRating: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -46,6 +47,12 @@ class rouletteViewController: UIViewController {
         grabPopular()
     }
     
+    // MARK: Haptic feedback when user toggles the switch
+    @IBAction func presentUIToggleHapticFeedback(_ sender: Any) {
+        let feedback = UISelectionFeedbackGenerator()
+        feedback.selectionChanged()
+    }
+    
     @IBAction func invokeChangeGenrePicker(_ sender: Any) {
         pickerView.showDialog("Select Genre", doneButtonTitle: "Select", cancelButtonTitle: "Cancel") { (result) -> Void in
             
@@ -58,6 +65,10 @@ class rouletteViewController: UIViewController {
     }
     
     @IBAction func doLetJesusTakeTheWheel(_ sender: Any) {
+        
+        // MARK: Invoke haptic feedback on button press
+        let feedback = UIImpactFeedbackGenerator(style: .medium)
+        feedback.impactOccurred()
         
         if (self.rouletteQuery != "Popular") {
             runQuery(genre: self.rouletteQuery)
