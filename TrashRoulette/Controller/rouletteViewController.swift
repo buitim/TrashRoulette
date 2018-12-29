@@ -9,6 +9,7 @@
 import UIKit
 import JGProgressHUD
 import PickerPopupDialog
+import GoogleMobileAds
 
 class rouletteViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class rouletteViewController: UIViewController {
     @IBOutlet weak var showArt: UIImageView!
     @IBOutlet weak var isAiringUISwitch: UISwitch!
     
+    // Google Ads
+    var interstitial: GADInterstitial!
+    
     // Initialize picker
     let pickerView = PickerPopupDialog()
     let pickerQueryTypes : [(Any, String)] = [(1, "Popular"), (2, "Action"), (3, "Romance"), (4, "Comedy"), (5, "Adventure"), (6, "Drama"), (7, "Ecchi"), (8, "Fantasy"), (9, "Horror"), (10, "Mahou Shoujo"), (11, "Mecha"), (12, "Music"), (13, "Mystery"), (14, "Psychological"), (15, "Sci-Fi"), (16, "Slice of Life"), (17, "Sports"), (18, "Supernatural"), (19, "Thriller")]
@@ -26,7 +30,9 @@ class rouletteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Init interstitial
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         
         // Clear Title and Rating
         self.showTitle.text = ""
@@ -45,6 +51,12 @@ class rouletteViewController: UIViewController {
         showArt.layer.cornerRadius = 20
         isAiringUISwitch.setOn(true, animated: false)
         grabPopular()
+        
+        // Load interstitial ad
+        let request = GADRequest()
+        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" , kGADSimulatorID ]
+        interstitial.load(request)
+        
     }
     
     // MARK: Haptic feedback when user toggles the switch
@@ -69,6 +81,11 @@ class rouletteViewController: UIViewController {
         // MARK: Invoke haptic feedback on button press
         let feedback = UIImpactFeedbackGenerator(style: .medium)
         feedback.impactOccurred()
+        
+        // Present Ad (Will only show on first press as to not be too intrusive)
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        }
         
         if (self.rouletteQuery != "Popular") {
             runQuery(genre: self.rouletteQuery)
@@ -97,10 +114,8 @@ class rouletteViewController: UIViewController {
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
             // If an english title exists, use it
-            print("== English Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
         } else { // Else use the romaji version
-            print("== Romaji Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
         }
         
@@ -127,10 +142,8 @@ class rouletteViewController: UIViewController {
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
             // If an english title exists, use it
-            print("== English Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
         } else { // Else use the romaji version
-            print("== Romaji Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
         }
         
@@ -188,10 +201,8 @@ class rouletteViewController: UIViewController {
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
             // If an english title exists, use it
-            print("== English Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
         } else { // Else use the romaji version
-            print("== Romaji Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
         }
         
@@ -203,6 +214,8 @@ class rouletteViewController: UIViewController {
     // MARK: Grab data for all popular shows
     fileprivate func grabPopularData(_ data: [GetPopularShowsQuery.Data.Page.Medium?], _ randomIndex: UInt32) {
         // DEBUG
+        print("== Random Number: \(randomIndex)")
+        print("Size of Array: \(data.count)")
         
         // Get show rating
         let averageScoreHolder = data[data.index(Int(randomIndex), offsetBy:0)]?.averageScore
@@ -217,10 +230,8 @@ class rouletteViewController: UIViewController {
         // Get show title
         if (data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english != nil) {
             // If an english title exists, use it
-            print("== English Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.english
         } else { // Else use the romaji version
-            print("== Romaji Title")
             self.showTitle.text = data[data.index(Int(randomIndex), offsetBy:0)]?.title?.romaji
         }
         
