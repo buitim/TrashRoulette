@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app-icon" width="480" height="480"/>
+        <image name="app-icon" width="2000" height="2000"/>
     </resources>
 </document>
