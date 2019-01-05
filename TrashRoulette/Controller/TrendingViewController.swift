@@ -41,7 +41,9 @@ class TrendingViewController: UITableViewController, GADBannerViewDelegate {
         addBannerViewToView(bannerView)
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        let request = GADRequest()
+        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" ] // Used for testing ads
+        bannerView.load(request)
         bannerView.delegate = self
         
         grabPopularData()

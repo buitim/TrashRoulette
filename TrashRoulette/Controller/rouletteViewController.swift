@@ -69,7 +69,11 @@ class rouletteViewController: UIViewController, GADInterstitialDelegate {
     func createAndLoadInterstitial() -> GADInterstitial {
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
-        interstitial.load(GADRequest())
+        
+        let request = GADRequest()
+        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" ] // Used for testing ads
+        interstitial.load(request)
+        
         return interstitial
     }
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
