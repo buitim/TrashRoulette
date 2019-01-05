@@ -11,7 +11,7 @@ import JGProgressHUD
 import PickerPopupDialog
 import GoogleMobileAds
 
-class rouletteViewController: UIViewController {
+class rouletteViewController: UIViewController, GADInterstitialDelegate {
     
     // MARK: Interface Builder Outlets because I'm a lazy scrub
     @IBOutlet var showTitle: UILabel!
@@ -20,19 +20,29 @@ class rouletteViewController: UIViewController {
     @IBOutlet weak var showArt: UIImageView!
     @IBOutlet weak var isAiringUISwitch: UISwitch!
     
-    // Google Ads
-    var interstitial: GADInterstitial!
-    
     // Initialize picker
     let pickerView = PickerPopupDialog()
     let pickerQueryTypes : [(Any, String)] = [(1, "Popular"), (2, "Action"), (3, "Romance"), (4, "Comedy"), (5, "Adventure"), (6, "Drama"), (7, "Ecchi"), (8, "Fantasy"), (9, "Horror"), (10, "Mahou Shoujo"), (11, "Mecha"), (12, "Music"), (13, "Mystery"), (14, "Psychological"), (15, "Sci-Fi"), (16, "Slice of Life"), (17, "Sports"), (18, "Supernatural"), (19, "Thriller")]
     var rouletteQuery: String = "Popular"
     
+    // AdMob
+    var interstitial: GADInterstitial!
+    var clickCounter : Int = 0
+    
+    
+    @objc func appMovedToBackground() {
+        print("== Resetting value")
+        clickCounter = 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Init interstitial
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        // Load interstitial ad
+        interstitial = createAndLoadInterstitial()
         
         // Clear Title and Rating
         self.showTitle.text = ""
@@ -52,11 +62,18 @@ class rouletteViewController: UIViewController {
         isAiringUISwitch.setOn(true, animated: false)
         grabPopular()
         
-        // Load interstitial ad
-        let request = GADRequest()
-        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" , kGADSimulatorID ]
-        interstitial.load(request)
+        interstitial.delegate = self
         
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
     }
     
     // MARK: Haptic feedback when user toggles the switch
@@ -82,16 +99,22 @@ class rouletteViewController: UIViewController {
         let feedback = UIImpactFeedbackGenerator(style: .medium)
         feedback.impactOccurred()
         
-        // Present Ad (Will only show on first press as to not be too intrusive)
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
+        if ((clickCounter % 10) == 0) {
+            // Present Ad
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
+            }
         }
+        
         
         if (self.rouletteQuery != "Popular") {
             runQuery(genre: self.rouletteQuery)
         } else {
             grabPopular()
         }
+        
+        clickCounter += 1
+        
     }
     
     
