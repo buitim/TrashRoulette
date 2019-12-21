@@ -10,6 +10,7 @@ import UIKit
 import JGProgressHUD
 import PickerPopupDialog
 import GoogleMobileAds
+import Apollo
 
 class rouletteViewController: UIViewController {
     
@@ -54,7 +55,7 @@ class rouletteViewController: UIViewController {
         
         // Load interstitial ad
         let request = GADRequest()
-        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" , kGADSimulatorID ]
+        request.testDevices = [ "6897da95070b60bbb1c8caab4aead016" , (kGADSimulatorID as! String) ]
         interstitial.load(request)
         
     }

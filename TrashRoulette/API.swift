@@ -1,9 +1,10 @@
 //  This file was automatically generated and should not be edited.
 
 import Apollo
+import Foundation
 
 /// Media type enum, anime or manga.
-public enum MediaType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+public enum MediaType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   /// Japanese Anime
   case anime
@@ -36,11 +37,48 @@ public enum MediaType: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodab
       default: return false
     }
   }
+
+  public static var allCases: [MediaType] {
+    return [
+      .anime,
+      .manga,
+    ]
+  }
 }
 
 public final class GetPopularAiringShowsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query getPopularAiringShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(season: WINTER, seasonYear: 2019, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    """
+    query getPopularAiringShows($type: MediaType) {
+      Page(page: 1, perPage: 300) {
+        __typename
+        media(season: WINTER, seasonYear: 2020, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {
+          __typename
+          title {
+            __typename
+            romaji
+            english
+          }
+          averageScore
+          coverImage {
+            __typename
+            extraLarge
+          }
+          averageScore
+          studios(isMain: true) {
+            __typename
+            nodes {
+              __typename
+              name
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "getPopularAiringShows"
 
   public var type: MediaType?
 
@@ -56,7 +94,7 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 100], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 300], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -83,7 +121,7 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("media", arguments: ["season": "WINTER", "seasonYear": 2019, "isAdult": false, "type": GraphQLVariable("type"), "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
+        GraphQLField("media", arguments: ["season": "WINTER", "seasonYear": 2020, "isAdult": false, "type": GraphQLVariable("type"), "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -352,8 +390,38 @@ public final class GetPopularAiringShowsQuery: GraphQLQuery {
 }
 
 public final class GetPopularReleasingShowsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query getPopularReleasingShows($type: MediaType) {\n  Page(page: 1, perPage: 100) {\n    __typename\n    media(status_in: RELEASING, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    """
+    query getPopularReleasingShows($type: MediaType) {
+      Page(page: 1, perPage: 50) {
+        __typename
+        media(status_in: RELEASING, isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {
+          __typename
+          title {
+            __typename
+            romaji
+            english
+          }
+          averageScore
+          coverImage {
+            __typename
+            extraLarge
+          }
+          averageScore
+          studios(isMain: true) {
+            __typename
+            nodes {
+              __typename
+              name
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "getPopularReleasingShows"
 
   public var type: MediaType?
 
@@ -369,7 +437,7 @@ public final class GetPopularReleasingShowsQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 100], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 50], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -665,8 +733,38 @@ public final class GetPopularReleasingShowsQuery: GraphQLQuery {
 }
 
 public final class GetPopularShowsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query getPopularShows($type: MediaType) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      title {\n        __typename\n        romaji\n        english\n      }\n      averageScore\n      coverImage {\n        __typename\n        extraLarge\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    """
+    query getPopularShows($type: MediaType) {
+      Page(page: 1, perPage: 50) {
+        __typename
+        media(isAdult: false, type: $type, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {
+          __typename
+          title {
+            __typename
+            romaji
+            english
+          }
+          averageScore
+          coverImage {
+            __typename
+            extraLarge
+          }
+          averageScore
+          studios(isMain: true) {
+            __typename
+            nodes {
+              __typename
+              name
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "getPopularShows"
 
   public var type: MediaType?
 
@@ -682,7 +780,7 @@ public final class GetPopularShowsQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 300], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 50], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -978,8 +1076,38 @@ public final class GetPopularShowsQuery: GraphQLQuery {
 }
 
 public final class GetAiringShowQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query getAiringShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, season: WINTER, seasonYear: 2019, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    """
+    query getAiringShow($genre: String) {
+      Page(page: 1, perPage: 50) {
+        __typename
+        media(genre: $genre, season: WINTER, seasonYear: 2020, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {
+          __typename
+          coverImage {
+            __typename
+            extraLarge
+          }
+          title {
+            __typename
+            romaji
+            english
+            native
+          }
+          averageScore
+          studios(isMain: true) {
+            __typename
+            nodes {
+              __typename
+              name
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "getAiringShow"
 
   public var genre: String?
 
@@ -995,7 +1123,7 @@ public final class GetAiringShowQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 300], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 50], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1022,7 +1150,7 @@ public final class GetAiringShowQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "season": "WINTER", "seasonYear": 2019, "isAdult": false, "type": "ANIME", "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
+        GraphQLField("media", arguments: ["genre": GraphQLVariable("genre"), "season": "WINTER", "seasonYear": 2020, "isAdult": false, "type": "ANIME", "sort": "POPULARITY_DESC", "format": "TV", "countryOfOrigin": "JP"], type: .list(.object(Medium.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1301,8 +1429,38 @@ public final class GetAiringShowQuery: GraphQLQuery {
 }
 
 public final class GetAllShowQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "query getAllShow($genre: String) {\n  Page(page: 1, perPage: 300) {\n    __typename\n    media(genre: $genre, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {\n      __typename\n      coverImage {\n        __typename\n        extraLarge\n      }\n      title {\n        __typename\n        romaji\n        english\n        native\n      }\n      averageScore\n      studios(isMain: true) {\n        __typename\n        nodes {\n          __typename\n          name\n        }\n      }\n    }\n  }\n}"
+    """
+    query getAllShow($genre: String) {
+      Page(page: 1, perPage: 50) {
+        __typename
+        media(genre: $genre, isAdult: false, type: ANIME, sort: POPULARITY_DESC, format: TV, countryOfOrigin: JP) {
+          __typename
+          coverImage {
+            __typename
+            extraLarge
+          }
+          title {
+            __typename
+            romaji
+            english
+            native
+          }
+          averageScore
+          studios(isMain: true) {
+            __typename
+            nodes {
+              __typename
+              name
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "getAllShow"
 
   public var genre: String?
 
@@ -1318,7 +1476,7 @@ public final class GetAllShowQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("Page", arguments: ["page": 1, "perPage": 300], type: .object(Page.selections)),
+      GraphQLField("Page", arguments: ["page": 1, "perPage": 50], type: .object(Page.selections)),
     ]
 
     public private(set) var resultMap: ResultMap

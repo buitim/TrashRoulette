@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import Apollo
 
 struct showData {
     var imageURL: URL?
@@ -101,8 +102,11 @@ class TrendingViewController: UITableViewController {
         showHUD(hud)
         
         //MARK: Run Query
+//        apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
+//            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+        
         apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
-            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+        guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
             
             //MARK: Dismiss HUD
             hud.dismiss()
