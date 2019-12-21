@@ -105,16 +105,21 @@ class TrendingViewController: UITableViewController {
 //        apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
 //            guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
         
-        apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
-        guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+        apollo.fetch(query: GetPopularReleasingShowsQuery(type: MediaType(rawValue: "ANIME"))) { result in
             
-            //MARK: Dismiss HUD
-            hud.dismiss()
-            
-            self.storeDataInArray(data) // Caius would be proud
-            
+            switch result {
+            case .success(let result):
+                guard let data = result.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                
+                //MARK: Dismiss HUD
+                hud.dismiss()
+                
+                self.storeDataInArray(data) // Caius would be proud
+                
+            case .failure(let error):
+                // Error. Maybe display error message?
+                print(error)
+            }
         }
-        
     }
-    
 }

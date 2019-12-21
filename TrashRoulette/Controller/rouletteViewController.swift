@@ -166,22 +166,36 @@ class rouletteViewController: UIViewController {
         
         // Run Query
         if (isAiringUISwitch.isOn) {
-            apollo.fetch(query: GetAiringShowQuery(genre: genre)) { result, _ in
-                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+            apollo.fetch(query: GetAiringShowQuery(genre: genre)) { result in
+                switch result {
+                case .success(let result):
+                    guard let data = result.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                    
+                    // Dismiss HUD
+                    hud.dismiss()
+                    
+                    self.grabData(data)
                 
-                // Dismiss HUD
-                hud.dismiss()
+                case .failure(let error):
+                    print(error)
+                }
                 
-                self.grabData(data)
             }
         } else {
-            apollo.fetch(query: GetAllShowQuery(genre: genre)) { result, _ in
-                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+            apollo.fetch(query: GetAllShowQuery(genre: genre)) { result in
+                switch result {
+                case .success(let result):
+                    guard let data = result.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                    
+                    // Dismiss HUD
+                    hud.dismiss()
+                    
+                    self.grabData(data)
                 
-                // Dismiss HUD
-                hud.dismiss()
+                case .failure(let error):
+                    print(error)
+                }
                 
-                self.grabData(data)
             }
         }
     }
@@ -254,26 +268,40 @@ class rouletteViewController: UIViewController {
         
         // Run Query
         if (isAiringUISwitch.isOn) {
-            apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
-                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+            apollo.fetch(query: GetPopularAiringShowsQuery(type: MediaType(rawValue: "ANIME"))) { result in
+                switch result {
+                    
+                case .success(let result):
+                    guard let data = result.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                    
+                    // Dismiss HUD
+                    hud.dismiss()
+                    
+                    // Grab random value out of the shows grabbed
+                    let randomIndex = arc4random_uniform(UInt32(data.count))
+                    self.grabPopularData(data, randomIndex)
+                    
+                case .failure(let error):
+                    print(error)
+                }
                 
-                // Dismiss HUD
-                hud.dismiss()
-                
-                // Grab random value out of the shows grabbed
-                let randomIndex = arc4random_uniform(UInt32(data.count))
-                self.grabPopularData(data, randomIndex)
             }
         } else {
-            apollo.fetch(query: GetPopularShowsQuery(type: MediaType(rawValue: "ANIME"))) { result, _ in
-                guard let data = result?.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
-                
-                // Dismiss HUD
-                hud.dismiss()
-                
-                // Grab random value out of the shows grabbed
-                let randomIndex = arc4random_uniform(UInt32(data.count))
-                self.grabPopularData(data, randomIndex)
+            apollo.fetch(query: GetPopularShowsQuery(type: MediaType(rawValue: "ANIME"))) { result in
+                switch result{
+                case .success(let result):
+                    guard let data = result.data?.page?.media else { return } // Note: guard exits scope while if let stays in scope
+                    
+                    // Dismiss HUD
+                    hud.dismiss()
+                    
+                    // Grab random value out of the shows grabbed
+                    let randomIndex = arc4random_uniform(UInt32(data.count))
+                    self.grabPopularData(data, randomIndex)
+                    
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
