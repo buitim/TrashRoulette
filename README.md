@@ -10,6 +10,15 @@ Builds fail because I don't have a dev cert rip.
 
 Alternatively, you can compile from source.
 
+##  Building
+
+This is just a quick rundown of how to build.
+
+- Clone repo
+- Open directory in console of choice and run `pod install`
+- Change bundle identifier in project to something unique
+- Build
+
 ## Screenshots
 
 [![preview](assets/screenshots/preview.png)](#)
