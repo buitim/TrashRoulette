@@ -3,7 +3,7 @@ query getPopularAiringShows($type: MediaType) {
 		media(
 			# status_in: RELEASING
 			season: WINTER
-			seasonYear: 2019
+			seasonYear: 2020
 			isAdult: false
 			type: $type
 			sort: POPULARITY_DESC
@@ -33,7 +33,7 @@ query getPopularReleasingShows($type: MediaType) {
 		media(
 			status_in: RELEASING
 			# season: WINTER
-			# seasonYear: 2019
+			# seasonYear: 2020
 			isAdult: false
 			type: $type
 			sort: POPULARITY_DESC

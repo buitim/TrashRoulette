@@ -4,7 +4,7 @@ query getAiringShow($genre: String) {
 			genre: $genre
 			# status_in: RELEASING
 			season: WINTER
-			seasonYear: 2019
+			seasonYear: 2020
 			isAdult: false
 			type: ANIME
 			sort: POPULARITY_DESC
